@@ -8,6 +8,7 @@ from llama_extractor import HandleBankStatement, HandleLlamaExtract
 from extracter import Process1
 from fastapi import BackgroundTasks, FastAPI, File, UploadFile, Form, Response
 from prepare_resp import HandleJsonForResp
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 jobs = {}
@@ -23,6 +24,7 @@ from bankst_new import (
     save_filtered_pdf,
     remove_annotations_and_enhance,
     cleanup_temp_images,
+    
 )
 
 
@@ -31,7 +33,7 @@ FILE_PATH = "./output_uploaded"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 last_file = None
 
-@app.post("/upload/")
+@app.post("/upload")
 async def upload_file(background_tasks: BackgroundTasks, file: UploadFile = File(...), fiscal_date: str = Form(...)):
     print('hitting upload recon api')
     with open("data.json", 'w') as files:
@@ -105,70 +107,73 @@ async def upload_file(response: Response):
     
 
 
-# @app.post("/upload/")
-# async def process_pdf(
-#     file: UploadFile = File(...),
-#     fiscal_date: str = Form(...)
-# ):
-#     # === Save Uploaded File ===
-#     input_pdf_path = f"uploaded_{file.filename}"
-#     with open(input_pdf_path, "wb") as f:
-#         shutil.copyfileobj(file.file, f)
+@app.post("/upload/")
+async def process_pdf(
+    file: UploadFile = File(...),
+    fiscal_date: str = Form(...)
+):
+    # === Save Uploaded File ===
+    input_pdf_path = f"uploaded_{file.filename}"
+    with open(input_pdf_path, "wb") as f:
+        shutil.copyfileobj(file.file, f)
 
-#     # === Parse Reconciliation Date ===
-#     try:
-#         rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
-#     except ValueError:
-#         return {"error": "Invalid date format. Use MM/DD/YYYY."}
+    # === Parse Reconciliation Date ===
+    try:
+        rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
+    except ValueError:
+        return {"error": "Invalid date format. Use MM/DD/YYYY."}
 
-#     base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
-#     cleaned_pdf = f"{base_name}_annoted.pdf"
+    base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
+    cleaned_pdf = f"{base_name}_annoted.pdf"
 
-#     # === Run Pipeline ===
-#     try:
-#         # out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-#         # extracted_pages = extract_text(cleaned_pdf)
-#         # chunks = split_into_chunks(extracted_pages)
-#         # relevant_pages = find_relevant_pages(chunks, rec_date)
+    # === Run Pipeline ===
+    try:
+        # out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
+        # extracted_pages = extract_text(cleaned_pdf)
+        # chunks = split_into_chunks(extracted_pages)
+        # relevant_pages = find_relevant_pages(chunks, rec_date)
 
-#         out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-#         extracted_pages = extract_text(cleaned_pdf)
-#         chunks = split_into_chunks(extracted_pages)
-#         relevant_pages = find_relevant_pages(chunks, rec_date)
+        out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
+        extracted_pages = extract_text(cleaned_pdf)
+        chunks = split_into_chunks(extracted_pages)
+        relevant_pages = find_relevant_pages(chunks, rec_date)
 
-#         if not relevant_pages:
-#             return {"message": "No relevant pages found for the given reconciliation date."}
+        if not relevant_pages:
+            return {"message": "No relevant pages found for the given reconciliation date."}
 
-#         temp_img_dir = "temp_images"
-#         preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
+        temp_img_dir = "temp_images"
+        preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
 
-#         output_dir = "output_uploaded"
-#         filtered_pdf = save_filtered_pdf(cleaned_pdf, output_dir, relevant_pages)
+        output_dir = "output_uploaded"
+        filtered_pdf = save_filtered_pdf(cleaned_pdf, output_dir, relevant_pages)
 
-#         final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
-#         remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
-#         # Cleanup
-#         # os.remove(cleaned_pdf)
-#         # os.remove(filtered_pdf)
-#         # cleanup_temp_images("temp_images")
-#         # cleanup_temp_images("temp_cleaned_images")
-#         os.remove(input_pdf_path)
+        # final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
+        # remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
 
-#         result = HandleLlamaExtract(filtered_pdf)
-#         print(result, "results")
-#         print(result)
-#         # os.remove(final_pdf)
-#         return {"data": result}
 
-#     except Exception as e:
-#         return {"error": str(e)}    
+        # Cleanup
+        # os.remove(cleaned_pdf)
+        # os.remove(filtered_pdf)
+        # cleanup_temp_images("temp_images")
+        # cleanup_temp_images("temp_cleaned_images")
+        os.remove(input_pdf_path)
+
+        result = HandleLlamaExtract(filtered_pdf)
+        print(result, "results")
+        print(result)
+        # os.remove(final_pdf)
+        return {"data": result}
+
+    except Exception as e:
+        return {"error": str(e)}    
     
 
 
-from bankst_new import  send_first_page_to_gemini
+# from bankst_new import  send_first_page_to_gemini, generate
+from text import generate
 import json
 
-from fastapi.responses import JSONResponse
+# from fastapi.responses import JSONResponse
 
 
 
@@ -194,41 +199,97 @@ async def process_and_extract_pdf(
 
     try:
         # === PDF Cleanup Pipeline ===
-        out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-        extracted_pages = extract_text(cleaned_pdf)
-        chunks = split_into_chunks(extracted_pages)
-        relevant_pages = find_relevant_pages(chunks, rec_date)
+        # out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
+        # extracted_pages = extract_text(cleaned_pdf)
+        # chunks = split_into_chunks(extracted_pages)
+        # relevant_pages = find_relevant_pages(chunks, rec_date)
 
-        if not relevant_pages:
-            return {"message": "No relevant pages found for the given reconciliation date."}
+        # if not relevant_pages:
+            # return {"message": "No relevant pages found for the given reconciliation date."}
 
         temp_img_dir = "temp_images_st"
-        preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
+        # preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
 
         output_dir = "output_uploaded"
-        filtered_pdf = save_filtered_pdf(cleaned_pdf, output_dir, relevant_pages)
+        filtered_pdf = save_filtered_pdf(input_pdf_path, output_dir, [1,2])
 
-        final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
-        remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
+        # final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
+        # remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
 
         # === Bank Info Extraction ===
         # result = extract_bank_data_from_pdf(final_pdf)
         # result1 = extract_bank_data_from_pdf(filtered_pdf)
 
-        result = send_first_page_to_gemini(final_pdf)
-        # resul2 = send_first_page_to_gemini(filtered_pdf)
-        # print(resul2)
+        # result = send_first_page_to_gemini(filtered_pdf)
+        # enhance_pdf = enhance_pdf_with_images(filtered_pdf)
+        gen = generate(filtered_pdf, fiscal_date)
+        print(gen)
+
+        # final = HandleJsonForResp(gen)
+        # print(final)
+
+
+
+        # result = HandleBankStatement(filtered_pdf)
+        # print(result)
+        # print(result1)
 
         # === Cleanup ===
-        os.remove(input_pdf_path)
-        os.remove(cleaned_pdf)
-        # os.remove(filtered_pdf)  # Optional
-        cleanup_temp_images("temp_images_st")
-        cleanup_temp_images("temp_cleaned_images")
-        os.remove(filtered_pdf)
-        os.remove(final_pdf)
+        try:
+            os.remove(input_pdf_path)
+            os.remove(filtered_pdf)  # Optional
+            cleanup_temp_images("temp_images_st")
+            cleanup_temp_images("temp_cleaned_images")
+        except Exception as err:
+            print(err, "file remove error")
+            pass
+        # os.remove(filtered_pdf)
+        # os.remove(final_pdf)
 
-        return {"data": result}
+        return {"data": gen}
 
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)   
+    
+
+# from fastapi import FastAPI, UploadFile, File, Form
+# from fastapi.responses import JSONResponse
+# import os
+# import shutil
+# from bankst_new import   save_and_enhance_filtered_pdf
+# from llama_extractor import HandleBankStatement
+# from prepare_resp import HandleJsonForResp
+
+# app = FastAPI()
+
+
+# UPLOAD_DIR = "uploads"
+# OUTPUT_DIR = "output"
+# os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+# @app.post("/upload_st")
+# async def process_pdf(file: UploadFile = File(...), 
+#                       fiscal_date: str = Form(...)):
+#     try:
+#         # Save uploaded file
+#         upload_path = os.path.join(UPLOAD_DIR, file.filename)
+#         with open(upload_path, "wb") as buffer:
+#             shutil.copyfileobj(file.file, buffer)
+
+#         # Process it
+#         filtered_pdf_path = save_and_enhance_filtered_pdf(upload_path, fiscal_date, OUTPUT_DIR)
+
+#         process = HandleBankStatement(filtered_pdf_path)
+#         print(process)
+
+#         data = HandleJsonForResp(process)
+#         print(data)
+
+#         return process
+
+#         # return {"data": data}
+
+        
+
+#     except Exception as e:
+#         return JSONResponse(content={"status": "error", "message": str(e)}, status_code=500)    
