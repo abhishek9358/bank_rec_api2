@@ -9,6 +9,9 @@ from extracter import Process1
 from fastapi import BackgroundTasks, FastAPI, File, UploadFile, Form, Response
 from prepare_resp import HandleJsonForResp
 from fastapi.responses import JSONResponse
+from text import generate
+import json
+
 
 app = FastAPI()
 jobs = {}
@@ -147,8 +150,7 @@ async def process_pdf(
         output_dir = "output_uploaded"
         filtered_pdf = save_filtered_pdf(cleaned_pdf, output_dir, relevant_pages)
 
-        # final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
-        # remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
+       
 
 
         # Cleanup
@@ -169,11 +171,7 @@ async def process_pdf(
     
 
 
-# from bankst_new import  send_first_page_to_gemini, generate
-from text import generate
-import json
 
-# from fastapi.responses import JSONResponse
 
 
 
@@ -199,41 +197,18 @@ async def process_and_extract_pdf(
 
     try:
         # === PDF Cleanup Pipeline ===
-        # out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-        # extracted_pages = extract_text(cleaned_pdf)
-        # chunks = split_into_chunks(extracted_pages)
-        # relevant_pages = find_relevant_pages(chunks, rec_date)
-
-        # if not relevant_pages:
-            # return {"message": "No relevant pages found for the given reconciliation date."}
+        
 
         temp_img_dir = "temp_images_st"
-        # preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
 
         output_dir = "output_uploaded"
         filtered_pdf = save_filtered_pdf(input_pdf_path, output_dir, [1,2])
-
-        # final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
-        # remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
-
-        # === Bank Info Extraction ===
-        # result = extract_bank_data_from_pdf(final_pdf)
-        # result1 = extract_bank_data_from_pdf(filtered_pdf)
-
-        # result = send_first_page_to_gemini(filtered_pdf)
-        # enhance_pdf = enhance_pdf_with_images(filtered_pdf)
+        print("working 0")
+       
         gen = generate(filtered_pdf, fiscal_date)
         print(gen)
 
-        # final = HandleJsonForResp(gen)
-        # print(final)
-
-
-
-        # result = HandleBankStatement(filtered_pdf)
-        # print(result)
-        # print(result1)
-
+        print("working 1")
         # === Cleanup ===
         try:
             os.remove(input_pdf_path)
@@ -243,53 +218,10 @@ async def process_and_extract_pdf(
         except Exception as err:
             print(err, "file remove error")
             pass
-        # os.remove(filtered_pdf)
-        # os.remove(final_pdf)
-
+       
         return {"data": gen}
 
     except Exception as e:
+        print(e, "error in api")
         return JSONResponse(content={"error": str(e)}, status_code=500)   
-    
-
-# from fastapi import FastAPI, UploadFile, File, Form
-# from fastapi.responses import JSONResponse
-# import os
-# import shutil
-# from bankst_new import   save_and_enhance_filtered_pdf
-# from llama_extractor import HandleBankStatement
-# from prepare_resp import HandleJsonForResp
-
-# app = FastAPI()
-
-
-# UPLOAD_DIR = "uploads"
-# OUTPUT_DIR = "output"
-# os.makedirs(UPLOAD_DIR, exist_ok=True)
-
-# @app.post("/upload_st")
-# async def process_pdf(file: UploadFile = File(...), 
-#                       fiscal_date: str = Form(...)):
-#     try:
-#         # Save uploaded file
-#         upload_path = os.path.join(UPLOAD_DIR, file.filename)
-#         with open(upload_path, "wb") as buffer:
-#             shutil.copyfileobj(file.file, buffer)
-
-#         # Process it
-#         filtered_pdf_path = save_and_enhance_filtered_pdf(upload_path, fiscal_date, OUTPUT_DIR)
-
-#         process = HandleBankStatement(filtered_pdf_path)
-#         print(process)
-
-#         data = HandleJsonForResp(process)
-#         print(data)
-
-#         return process
-
-#         # return {"data": data}
-
         
-
-#     except Exception as e:
-#         return JSONResponse(content={"status": "error", "message": str(e)}, status_code=500)    

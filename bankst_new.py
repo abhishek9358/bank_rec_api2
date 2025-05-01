@@ -8,13 +8,13 @@ import pytesseract
 import pdfplumber
 import fitz  # PyMuPDF
 from PyPDF2 import PdfReader, PdfWriter
-import google.generativeai as geneartive
+import google.generativeai as genrate
 from google import genai
 from google.genai import types
 import json
 # === Gemini Config ===
-geneartive.configure(api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k")
-model = geneartive.GenerativeModel("models/gemini-1.5-flash")
+genrate.configure(api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k")
+model = genrate.GenerativeModel("models/gemini-1.5-flash")
 
 def gemini_response(prompt):
     response = model.generate_content(prompt)
@@ -331,25 +331,79 @@ Return the response strictly in the following JSON format:
 
 
 
+# def generate(pdf_path, fiscal_date):
+#     print(pdf_path, "path")
+#     try:
+#         client = genai.Client(
+#         api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k",
+#         )
+
+#         files = [
+#             client.files.upload(file=pdf_path),
+            
+#         ]
+#         model = "gemini-2.0-flash"
+#         contents = [
+#             types.Content(
+#                 role="user",
+#                 parts=[
+#                     types.Part.from_uri(
+#                         file_uri=files[0].uri, # type: ignore
+#                         mime_type=files[0].mime_type, # type: ignore
+#                     ),
+#                     types.Part.from_text(text=f"Extract endingbalance as of {fiscal_date}"),
+#                     types.Part.from_text(text="""extract data from provided document
+#                     Schema
+#                     {
+#                     endingbalance: string,
+#                     date: string,
+#                     accountnumber: string,
+#                     Bankname:string
+#                     }"""),
+#                 ],
+#             ),
+#         ]
+#         generate_content_config = types.GenerateContentConfig(
+#             # thinking_config = types.ThinkingConfig(
+#             #     thinking_budget=0,
+#             # ),
+#             response_mime_type="application/json",
+#         )
+#         rsp = client.models.generate_content(
+#             model=model,
+#             contents=contents, # type: ignore
+#             config=generate_content_config,
+#         )
+#         print(rsp)
+#         rsp = json.loads(rsp.model_dump_json())
+
+#         rsp = rsp['candidates'][0]['content']['parts'][0]['text']
+#         rsp = json.loads(rsp)
+#         return rsp[0]
+#     except Exception as error:
+#         print(error, "error in gemini")
+
+
+
 def generate(pdf_path, fiscal_date):
     print(pdf_path, "path")
     try:
-        client = genai.Client(
-        api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k",
-        )
+        client = genai.Client(api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k")
 
-        files = [
-            client.files.upload(file=pdf_path),
-            
-        ]
+        try:
+            uploaded_file = client.files.upload(file=pdf_path)
+        except Exception as upload_error:
+            print("❌ File upload failed:", upload_error)
+            raise ValueError("Gemini file upload failed.")
+
         model = "gemini-2.0-flash"
         contents = [
             types.Content(
                 role="user",
                 parts=[
                     types.Part.from_uri(
-                        file_uri=files[0].uri, # type: ignore
-                        mime_type=files[0].mime_type, # type: ignore
+                        file_uri=uploaded_file.uri,
+                        mime_type=uploaded_file.mime_type,
                     ),
                     types.Part.from_text(text=f"Extract endingbalance as of {fiscal_date}"),
                     types.Part.from_text(text="""extract data from provided document
@@ -364,21 +418,32 @@ def generate(pdf_path, fiscal_date):
             ),
         ]
         generate_content_config = types.GenerateContentConfig(
-            # thinking_config = types.ThinkingConfig(
-            #     thinking_budget=0,
-            # ),
             response_mime_type="application/json",
         )
+
         rsp = client.models.generate_content(
             model=model,
-            contents=contents, # type: ignore
+            contents=contents,
             config=generate_content_config,
         )
-        print(rsp)
-        rsp = json.loads(rsp.model_dump_json())
 
-        rsp = rsp['candidates'][0]['content']['parts'][0]['text']
-        rsp = json.loads(rsp)
-        return rsp[0]
+        print("Gemini raw response:", rsp)
+
+        rsp_json = json.loads(rsp.model_dump_json())
+
+        if (
+            "candidates" not in rsp_json
+            or not rsp_json["candidates"]
+            or "content" not in rsp_json["candidates"][0]
+        ):
+            raise ValueError("❌ Invalid Gemini response structure")
+
+        text_part = rsp_json["candidates"][0]["content"]["parts"][0]["text"]
+        extracted_data = json.loads(text_part)
+
+        return extracted_data[0] if isinstance(extracted_data, list) else extracted_data
+
     except Exception as error:
-        print(error, "error in gemini")
+        print("❌ Error in Gemini generate():", error)
+        raise
+
