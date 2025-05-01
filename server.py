@@ -11,7 +11,11 @@ from fastapi.responses import JSONResponse
 from text import generate
 import json
 from bank_reconsiliation import run_pdf_filter_pipeline
+import time 
 
+from subsequent.index import  HandleSubSequent
+
+from typing import Annotated
 
 app = FastAPI()
 jobs = {}
@@ -106,4 +110,34 @@ async def process_and_extract_pdf(
     except Exception as e:
         print(e, "error in api")
         return JSONResponse(content={"error": str(e)}, status_code=500)   
+    
+
+@app.post("/upload_sub/")
+async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFile):
+    print(file)
+    file_path1 = f"./{time.time()}{file.filename}"
+    try:
+        contents1 = await file.read()
+
+        with open(file_path1, "wb") as f:
+            f.write(contents1)
         
+        final_resp =  await HandleSubSequent(fiscal_date,file_path1)
+
+        print(final_resp, 'hi')
+        try:
+            os.remove(f"./{file_path1}")
+        except:
+            pass
+        
+        return {
+             "result": {
+                "items": final_resp
+             }
+        }
+    except Exception as err:
+        print(err, "error in sub api")
+        os.remove(f"./{file_path1}")
+        return {
+              "result": "Could not found"
+         }
