@@ -1,11 +1,22 @@
 from google import genai
 from google.genai import types
 import json
+import google.generativeai as gen
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+
+gen.configure(api_key=GEMINI_API_KEY)
 
 def generate(pdf_path, fiscal_date):
    try:
        client = genai.Client(
-        api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k",
+        # api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k",
+        api_key= GEMINI_API_KEY
         )
 
        files = [
@@ -29,7 +40,7 @@ def generate(pdf_path, fiscal_date):
         endingbalance: string,
         statementdate: string,
         accountnumber: string,
-        bankname:string
+        Bankname:string
         }
                                          """),
                 ],
