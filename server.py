@@ -114,6 +114,7 @@ async def process_and_extract_pdf(
 
 @app.post("/upload_sub/")
 async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFile):
+
     print(file)
     file_path1 = f"./{time.time()}{file.filename}"
     try:
@@ -129,7 +130,7 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
             os.remove(f"./{file_path1}")
         except:
             pass
-        
+
         return {
              "result": {
                 "items": final_resp
@@ -141,3 +142,7 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
         return {
               "result": "Could not found"
          }
+    
+
+
+  
