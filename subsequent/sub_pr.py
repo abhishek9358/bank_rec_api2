@@ -181,9 +181,17 @@ import random
 from concurrent.futures import ThreadPoolExecutor
 from google import genai
 from google.genai import types
+import os 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+
+GEMINI_API_KEY = os.getenv("subsequent_gemini_api")
 
 # Use your actual API key
-API_KEY = "AIzaSyDD4bFKst5K0J39VNqDhCO4y_OOgRna3R4"
+API_KEY = GEMINI_API_KEY
 
 def SubSequentResponse1(txt, max_retries=3):
     for attempt in range(max_retries):
