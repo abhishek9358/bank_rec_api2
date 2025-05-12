@@ -2,326 +2,466 @@
 
 ## Page 1
 
-Humboldt Bay Harbor, Recreation & Conservation District C . A x Q, )
-410200 CASH IN BANK, CHECKING, Period Ending 07/31/2024 Co
-RECONCILIATION REPORT Lo208.
-Reconciled on:
-Reconciled by: Mindy Hiley
-Any changes made to transactions after this date aren't included in this report.
-Summary USD
-Statement beginning balan Ce, a csmmsnesmtmstensiaeentesnetuetininanttiinssienenenneustneiiaen stimu tie rtareuneusniinttiunnuniuntuneuninibiniansunueanunatiennntneennne! F027
-Interest Carne. ssanmnesaetesgtnisietsnsuestninseitnsseisesiniesrenssieisinstunustytatisieneuineteneiestnhsuesiunaeseinnennenis ian noinusneniintiininuensinunnnreibiitesieieesuneiiinniiminemneievaneendd*20
-Checks and payments cleared (0)... csuusssneninensietetnsitintnteittsieennsnssinamititisrieuinieiniininsiueusiitnaninnisneunesiiienniiiuinsisnunemuteniinmntumemeineuamnnneianeemend-O0
-Deposits and other credits cleared (4) emmseumnteenenettntemtetnsteitninetitiueneseiteitinsntineitietinitninieetisiinenimnntitinneimeeineniniiiueniunioinnnnenmuenyand 23998
-Statement ending balance. ceccsseementinnneinmeneneneteetiisieneteneimstniseneniise simian eiisuniiinrnstaritnetiiitnuitisneusunnananiinninsusentinsiananitinanennnn 2OTIEAS
-Uneleared transactions as of 07/31/2024 a cssmssntetststnastensiatinetniyiststnetntiamustssietsinstameseiiniinitiiineutinusnenintitiuneieiinututinnimnsinianminnutmanmnuninannnnn LTS
-Register balance as Of 07/31/2024 a sesssusutssensetetetensstnstensisinesnistenneststacscatseseenmsuetitntenasintsinetiniiieeipiiiuaineiietiinimineninariitiaiininmernmnntinnennemninnane or GIg 38
-Cleared transactions after 07/31/2024. sssussusntesssnsateetstsestsitsuununtnitpisisssisninsetsiteituesseteunsniesibeuneesinaenesiisennttusinueinnniniieniusisinnaiumananeennutnnedd OO
-Uncleared transactions after 07/31/2024 a ssusnsnsneneniaunienisieatsnnssstitmnnisieutninuinuiesisnsiueinitumeiiiiiinusiiuinsiiinnsiueniunennutiniuenenanmmaneenamnnimenunen Ia 40
-Register balance as Of 08/07/2024 asmsmsnnnemtntnittusestininnnttnihisnninntiemuttienineiniiininiiniinamninssiinaminiuunenutitnninnimuminnanninnnnnnennimmnmnanle OBOETB
-Details
-Deposits and other credits cleared (4)
-DATE TYPE REF NO, PAYEE AMOUNT (USD)
-06/30/2024 Deposit 716.00
-Deposit 1,105.00
-07/17/2024 Deposit §,812.96
-07/19/2024 Deposit CASH Customer 0.00
-Total 7,633.96
-Additional information
-Uncleared checks and payments as of 07/31/2024
-DATE TYPE REF NO. PAYEE AMOUNT (USD)
-11/13/2012 Check 48521 Durant, Candace -167.75
-Total . -167.75
-Uncleared deposits and other credits after 07/31/2024
-DATE TYPE REF NO. PAYEE AMOUNT (USD)
-Deposit 903.40
-Total 903.40
-
+@x amalgamated sigan ee
+‘ED) painlz amalgamatedbank:com
+“= 275 Seventh Avenue
+New York, NY 10001 Page 1 of 1
+Return Service Requested 514
+mB 00028640 MA218R02012 01 000000000
+SPREE
+NI ACCOUNT SUMMARY’ 151057568.
+CENTER FOR THIRD WORLD: ORGANIZING —
+1714 FRANKLIN ST STE 100245 Account number 151057568
+OAKLAND CA 94612-3488 Statement date 01/31/24
+Checks/Items enclosed 0
+Balance $257,509.18
+ACCOUNT DETAILS: GOMMERCIAL LITE. GHEGKING: ACCOUNT NUMBER 151057568:
+Beginning Balance 01/01/24 $256,801.88
+Deposits/Misc Credits 4 $707.30
+Withdrawals/Misc Debits 0 $0.00
+**Ending Balance 01/31/24 $257,509.18
+Service Charge $0.00
+Average Balance $257,363.00
+Enclosures 0
+‘CREDITS: ACCOUNT NUMBER 151057568:
+DATE ACTIVITY DESCRIPTION DEPOSITS WITHDRAWALS
+01/02 STRIPE/TRANSFER ST-JOV3W4F 5J2K7 $50.19
+01/03 STRIPE/TRANSFER ST-H3E1C8T2C6G2 $242.45
+01/04 STRIPE/TRANSFER ST-C7O9J4R8CORO $313.79
+01/31 STRIPE/TRANSFER ST-F5R4S6F8C8I5 $100.87
+‘DAILY BALANCE SUMMARY ACCOUNT NUMBER 451057568:
+DATE BALANCE DATE BALANCE DATE BALANCE
+01/02 $256,852.07 01/04 $257 408.31 01/31 $257,509.18
+01/03 $257,094.52
+THANK. YOU: FOR' BANKING WITH THE AMALGAMATED: BANK.
+WE APPRECIATE YOUR BUSINESS.
+TEEN:
+MACROMOL
+ENSEMBL ANK
+WEWE RECENT’ REVISED OUR FSS SCHEDULE
+To view the eiiactive dates and] wacked fae schedule,
+visit emalgamenccloonkcomvViass
+
 
 
 
 ## Page 2
 
-_ tricounties bank Statement Ending 07/31/2024
-Service With Solutions® HUMBOLDT BAY HARBOR Page 1 of 4
-P.O. Box 909, Chico CA 95927 Account Number:549110773
-ADDRESS SERVICE REQUESTED Service With Solutions
-QO Speak with a 900.999.
-Q@ Banker: 1-800-922-8742
-Automated
-MBOLD BOR -844-822-
-HU BO DT BAY HARBO O Phone Banking, 1-844-822-2447
-EUREKA CA 95502-1030 C Online Banking: TriCountiesBank.com
-Together we can male a chittarance ih tine Ives
-a 6 CALCITE Gommuniny colece smecents
-Agpenteiour 80th Anniversay Tht Counties Penk has pertinence] with the Reumdkeiion
-. fer Califia Commnumiiiy Collages to reise menay far thelr Stuck Amfsascacler Program.
-This sregrem enelbles students to baaome leaclasen thei? canreusss, connect thal
-paces with reseunacs hetcen overcome banter, and ultimately help them achiave their
-educational goals: RGaoE :
-Toleam mere and to denate, Veh TiiGemmiissiek.comy/SO . Fee
-SST ae
-. LB] ashen IMembenFDIG
-Overall Balance Summary
-Account Type Account Number Ending Balance
-Public Funds Int Ckg Images 549110773 $26,117.13
-Public Funds Int Ckg Images-549110773
-Account Summary Interest Summary
-Date Description Amount Description Amount
-Beginning Balance $18,482.97 — Interest Earned From Through 07/31/2024
-4 Credit(s) This Period $7,634.16 Annual Percentage Yield Earned 0.01%
-0 Debit(s) This Period $0.00 Days in Statement Cycle 31
-07/31/2024 Ending Balance $26,117.13 Interest and/or Reward Paid $0.20
-Interest Paid this Statement Cycle $0.20
-Interest Paid Year-to-Date $0.90
-Deposits
-Date Description Amount
-07/03/2024 = DEPOSIT oo $1,105.00
-DEPOSIT $716.00
-m@arevens ae oe ou bo, a ee ee Ash ie !
-—NMLS#458732° ee a Member FDIC |
+IMPORTANT INFORMATION ABOUT THIS ACCOUNT STATEMENT AND YOUR RIGHTS
 
+1. Review at Once: Notify the Bank in writing within 30 days after we mail or make this statement available to you of any irregularities in your account
+statement, or you may lose valuable rights. See the Account Opening Disclosures applicable to your account for details about this and other time
+limitations regarding notice or irregularities. (This paragraph does not apply to electronic funds or wire transfers.)
+
+2. Electronic Funds Transfers under Regulation E (for Consumer accounts only): In case of errors or questions about your Electronic Funds
+Transfers, call our Electronic Banking Group (EBG) at 800-662-0860 or write us (Electronic Banking Group, Amalgamated Bank, 275 Seventh
+Avenue, New York, NY 10001) as soon as you can, if you think your statement or receipt is wrong or if you need more information about a transfer
+on the statement or receipt.
+
+\We must hear from you no later than 60 days after we sent you the FIRST statement on which the error or problem appeared. Tell us:
+
+e Your name and account number.
+
+° The error or transfer you are unsure about, and explain as clearly as you can why you believe there is an error or why you need more information.
+
+e The dollar amount of the suspected error.
+
+We will investigate your complaint and correct any error promptly. If we take more than 10 business days to do this, we will provisionally credit your
+
+account for the amount you think is in error, so that you will have the use of the money during the time it takes us to complete our investigation.
+
+Confirmation of Direct Deposit: If you have arranged to have your account credited by regularly scheduled (at least once every 60 days)
+
+electronic funds transfers (for example, direct deposit of social security, pension or payroll) and need to confirm if the deposit was made, you can
+
+contact our call center at 800-662-0860.
+
+3. Wire Transfers: In case of errors or if you have questions about particular wire transfer transactions, contact EBG at 800-662-0860.
+
+4. For all other inquiries: Please contact our call center at 800-662-0860.
+
+5. NY State Banking Account Disclosure for Affordable Checking:
+
+° There is no limit to the number of withdrawals permitted on this account.
+
+e Our fee for using non-Amalgamated, non-Allpoint® and international ATMs is $3.00 per transaction, including balance inquiry. Additional fees
+from other institutions may apply for non-Amalgamated, non-Allpoint® and international ATM transactions.
+
+e A withdrawal is deemed made when it is recorded on the bank's books, which may not necessarily be the actual date of the transaction.
+
+IMPORTANT INFORMATION ABOUT MONEY MARKET AND SAVINGS ACCOUNTS
+
+There is no limit to the number of in-person deposits or withdrawals you can make to or from these accounts. Transfer limitations listed below are only
+
+applicable to Commercial accounts.
+
+e Transfers from Savings Accounts to another account or to third parties by preauthorized, automatic, telephone, or electronic transfers are limited
+to a combined total of six (6) per month. Federal regulations require that if you violate the above-described limitations, we may have to close or
+reclassify your account to a checking account.
+
+° Transfers from Money Market Accounts to another account or to third parties by preauthorized, automatic or telephone transfers are limited to a
+combined total of six (6) per month; transfers may be made by check, draft, Debit Card or similiar electronic means to third parties. Federal
+regulations require that if you violate the above-described limitations, we may have to close or reclassify your account to a checking account.
+
+We reserve the right to require no fewer than 7 days’ notice in writing before each withdrawal from an interest-bearing account other than a time deposit,
+
+or from any other savings account as defined by Regulation D. (The law requires us to reserve this right, but it is not our general policy to use it.)
+
+NOTIFY THE BANK IMMEDIATELY IN WRITING TO CHANGE.OR CORRECT YOUR ADDRESS FDIC a
+
+For branch listings, visit amalgamatedbank.com or call 800-662-0860. Senet: SLENDER
+
+List outstanding checks Enter present balance
+Check Number Amount
+Plus: Deposits made since
+
+statement date $
+
+Balance checkbook
+
+as of month end $
+
+es aa O——
+
+Total
+
 
 
 
 ## Page 3
 
-HUMBOLDT BAY HARBOR 549110773 Statement Ending 07/31/2024 Page 2 of 4
-THIS STATEMENT SHALL BE CONSIDERED CORRECT AND TRI COUNTIES BANK SHALL NOT BE LIABLE FOR ANY DISCREPANCIES IF NOT
-REPORTED TO THE BANK WITHIN 30 CALENDAR DAYS FROM THE DATE THIS STATEMENT WAS MAILED OR MADE AVAILABLE. RESPONSE TIME
-FOR REPORTING ERRORS OR INQUIRIES REGARDING ELECTRONIC FUND TRANSFERS OR YOUR AUTOMATIC CASH RESERVE ARE SEPARATELY
-DISCLOSED, ALLITEMS DEPOSITED ARE SUBJECT TO RECEIPT OF FINAL PAYMENT.
-OUTSTANDING CHECKS
-HERE’S AN EASY WAY TO BALANCE YOUR CHECKBOOK: ITEMNO AMOUNT
-(A) UPDATE CHECKBOOK BALANCE :
-* Subtract from your checkbook balance any monthly service charges, other bank charges and all | ff
-automatic withdrawals/payments not previously deducted. FT
-¢ Add to your checkbook balance all automatic deposits, other deposits and automatic cash reserve advances
-(B) VERIFY OUTSTANDING CHECKS rf
-* Your checks are listed on the front of this statement in check number sequence or in date paid sequence COO
-if the check number is not available. An asterisk (*) indicates missing check number(s}. ||
-* Check off each check listed on your check register or stubs. PFT
-* List in the space provided all outstanding checks. Add these and enter total.
-(C) RECONCILE BALANCES Po
-¢ Enter the ending balance as shown on the front of this statement. (+). ftir FoF
-* Add all deposits which are not shown on this statement. | |
-* Enter total of outstanding checks described in (B) above and (+) || P|
-Fe ee
-(D) IF YOU DID NOT BALANCE
-* Verify that the previous month’s statement was balanced properly.
-* Review all additions and subtractions for errors as well as balances brought forward in your checkbook register. .
-* Record any outstanding transactions from prior statements.
-* Determine that all credits (including Automatic Deposits) shown in the “Deposits” and “Other Credits” sections of this statement are entered in
-your checkbook.
-* Compare the amount of each item listed on this statement against the amounts entered in your checkbook.
-The following notices apply if your account is maintained primarily for personal, family or household purposes.
-IN CASE OF ERRORS OR QUESTIONS ABOUT YOUR ELECTRONIC TRANSFERS ;
-Call us at 1-800-922-8742 or write to us at Tri Counties Bank, Customer Service Department, P. O. Box 909 Chico, CA 95927 as soonas you
-can, if you think your statement or receipt is wrong or if you need more information abouta transfer on the statement or receipt. We must hear
-from you no later than 60 days after we sent you the FIRST statement on which the error or problem appeared.
-(1) Tell us your name and account number (if any).
-(2) Describe the error or the transfer you are unsure about, and explain as clearly as you can why you believe it is an error or why you need
-more information.
-(3) Tell us the dollar amount of the suspected error.
-Wewill investigate your complaint and will correct any error promptly. If we take more than 10 business days to clo this, we will credit your account for
-the amount you think is in error; so that you will have the use of the money during the time it takes us to complete our investigation.
-Important Notice About Your Tri Counties Bank Visa® Debit Card
-Your Card is enabled with non-Visa debit transaction processing. This means you may use your Card on a PIN-Debit Network without using a PIN or
-with your PIN. Examples of the types of actions you may be required to make to initiate a Card transaction on a PIN-Debit Network include initiating
-a payment directly with the biller, possibly via telephone, Internet, or kiosk locations. The non-Visa Debit Network(s) for which such transactions are
-enabled is the Accel® network.
-Examples of the types of actions that you may be required to make to initiate a transaction on your Card include:
-» Signing a receipt
-* Providing a Card number, expiration date and card verification code over the phone or the internet
-* Swiping your Card through a point-of-sale (POS) terminal and entering your PIN or signing for your purchase
-The provisions of your agreement with us relating only to Visa transactions are not applicable to transactions that are conducted on networks other
-than a Visa or Plus network, such as a PIN-Debit Network. This means that for transactions that are processed through networks other than Visa or Plus,
-the above Visa zero dollar liability protection rules do not apply, even if you did not have to enter a PIN when you conducted the transaction.
-
+@, amalgamated 800-662-0860
+‘ o ~a A Ve gl toe ae t va oan . ee A ame’ re ct vn
+) oank amalgamatedbank.com
+“~ 275 Seventh Avenue
+New York, NY 10001 Page 1 of 2
+Return Service Requested 514
+minor 00020516 MA218R03302 01 000000000
+NASER
+PERU,
+Ne ACCOUNT SUMMARY’ 151057568.
+CENTER FOR THIRD WORLD: ORGANIZING —
+1714 FRANKLIN ST STE 100245 Account number 151057568
+OAKLAND CA 94612-3488 Statement date 03/29/24
+Checks/Items enclosed 0
+Balance $292,845.37
+ACCOUNT DETAILS: GOMMERCIAL LITE. GHEGKING: ACCOUNT NUMBER 151057568:
+Beginning Balance 03/01/24 $278,303.96
+Deposits/Misc Credits 21 $14,541.44
+Withdrawals/Misc Debits 0 $0.00
+**Ending Balance 03/31/24 $292,845.37
+Service Charge $0.00
+Average Balance $289,370.00
+Enclosures 0
+‘CREDITS: ACCOUNT NUMBER 151057568:
+DATE ACTIVITY DESCRIPTION DEPOSITS WITHDRAWALS
+03/01 STRIPE/TRANSFER ST-O8G5M6L5G3G5 $2,312.66
+03/04 STRIPE/TRANSFER ST-M6Z2Q7N8I8F8 $1,180.11
+03/05 STRIPE/TRANSFER ST-D8O5H5D782A5 $744.87
+03/06 PAY PAL/TRANSFER $630.65
+03/06 STRIPE/TRANSFER ST-L603G4L7V7I3 $4,920.25
+03/07 STRIPE/TRANSFER ST-P5Z9M1M1K9L1 $450.69
+03/08 STRIPE/TRANSFER ST-K3F8S3R2N904 $52.17
+03/11 STRIPE/TRANSFER ST-B7M8E3U3U9S8 $104.34
+03/12 STRIPE/TRANSFER ST-Y9P4K9B6A8G5 $52.17
+03/13 STRIPE/TRANSFER ST-K205K2K9W8Y0 $733.34
+03/14 STRIPE/TRANSFER ST-W9S1Z0R6B6U9 $683.15
+03/15 STRIPE/TRANSFER ST-POE6J8Q7Z0L3 $392.25
+03/18 STRIPE/TRANSFER ST-R4E4I2Q9A3J4 $287.91
+03/19 STRIPE/TRANSFER ST-BSQ4Z6I4WO0I5 $627.99
+03/20 STRIPE/TRANSFER ST-V2T9T9M1H8J0 $729.20
+03/21 STRIPE/TRANSFER ST-G4A9X0P2V6L7 $104.34
+03/22 STRIPE/TRANSFER ST-F2X1T2L7L4D7 $52.17
+03/25 STRIPE/TRANSFER ST-B3L8Y8V1Z5K7 $175.70
+NDEI,
+TAC KEES
+ERR P OO
+GhEREMHAGK
+
 
 
 
 ## Page 4
 
-~ tricounties bank
-Statement Ending 07/31/2024
-HUMBOLDT BAY HARBOR Page 3 of 4
-Account Number:549110773
-Public Funds Int Ckg Images-5491 10773 (continued)
-Deposits (continued)
-Date Description Amount
-07/17/2024: | DEPOSIT : ; . $5,812.96
-Other Credits
-Date Description Amount
-07/31/2024 — INT PMT SYS-GEN , a ae : $0.20
+IMPORTANT INFORMATION ABOUT THIS ACCOUNT STATEMENT AND YOUR RIGHTS
 
+1. Review at Once: Notify the Bank in writing within 30 days after we mail or make this statement available to you of any irregularities in your account
+statement, or you may lose valuable rights. See the Account Opening Disclosures applicable to your account for details about this and other time
+limitations regarding notice or irregularities. (This paragraph does not apply to electronic funds or wire transfers.)
+
+2. Electronic Funds Transfers under Regulation E (for Consumer accounts only): In case of errors or questions about your Electronic Funds
+Transfers, call our Electronic Banking Group (EBG) at 800-662-0860 or write us (Electronic Banking Group, Amalgamated Bank, 275 Seventh
+Avenue, New York, NY 10001) as soon as you can, if you think your statement or receipt is wrong or if you need more information about a transfer
+on the statement or receipt.
+
+\We must hear from you no later than 60 days after we sent you the FIRST statement on which the error or problem appeared. Tell us:
+
+e Your name and account number.
+
+° The error or transfer you are unsure about, and explain as clearly as you can why you believe there is an error or why you need more information.
+
+e The dollar amount of the suspected error.
+
+We will investigate your complaint and correct any error promptly. If we take more than 10 business days to do this, we will provisionally credit your
+
+account for the amount you think is in error, so that you will have the use of the money during the time it takes us to complete our investigation.
+
+Confirmation of Direct Deposit: If you have arranged to have your account credited by regularly scheduled (at least once every 60 days)
+
+electronic funds transfers (for example, direct deposit of social security, pension or payroll) and need to confirm if the deposit was made, you can
+
+contact our call center at 800-662-0860.
+
+3. Wire Transfers: In case of errors or if you have questions about particular wire transfer transactions, contact EBG at 800-662-0860.
+
+4. For all other inquiries: Please contact our call center at 800-662-0860.
+
+5. NY State Banking Account Disclosure for Affordable Checking:
+
+° There is no limit to the number of withdrawals permitted on this account.
+
+e Our fee for using non-Amalgamated, non-Allpoint® and international ATMs is $3.00 per transaction, including balance inquiry. Additional fees
+from other institutions may apply for non-Amalgamated, non-Allpoint® and international ATM transactions.
+
+e A withdrawal is deemed made when it is recorded on the bank's books, which may not necessarily be the actual date of the transaction.
+
+IMPORTANT INFORMATION ABOUT MONEY MARKET AND SAVINGS ACCOUNTS
+
+There is no limit to the number of in-person deposits or withdrawals you can make to or from these accounts. Transfer limitations listed below are only
+
+applicable to Commercial accounts.
+
+e Transfers from Savings Accounts to another account or to third parties by preauthorized, automatic, telephone, or electronic transfers are limited
+to a combined total of six (6) per month. Federal regulations require that if you violate the above-described limitations, we may have to close or
+reclassify your account to a checking account.
+
+° Transfers from Money Market Accounts to another account or to third parties by preauthorized, automatic or telephone transfers are limited to a
+combined total of six (6) per month; transfers may be made by check, draft, Debit Card or similiar electronic means to third parties. Federal
+regulations require that if you violate the above-described limitations, we may have to close or reclassify your account to a checking account.
+
+We reserve the right to require no fewer than 7 days’ notice in writing before each withdrawal from an interest-bearing account other than a time deposit,
+
+or from any other savings account as defined by Regulation D. (The law requires us to reserve this right, but it is not our general policy to use it.)
+
+NOTIFY THE BANK IMMEDIATELY IN WRITING TO CHANGE.OR CORRECT YOUR ADDRESS FDIC a
+
+For branch listings, visit amalgamatedbank.com or call 800-662-0860. Senet: SLENDER
+
+List outstanding checks Enter present balance
+Check Number Amount
+Plus: Deposits made since
+
+statement date $
+
+Balance checkbook
+
+as of month end $
+
+es aa O——
+
+Total
+
 
 
 
 ## Page 5
 
-- - tricounties bank
-Statement Ending 07/31/2024
-HUMBOLDT BAY HARBOR Page 4 of 4
-Account Number:549110773
-End of Statement
-° a
-
+@, amalgamated _____, 900-662-0860
+‘ED) painlz amalgamatedbank.com
+“975 Seventh Avenue
+New York, NY 10001 Page 2 of 2
+‘CREDITS (Continued): ACCOUNT NUMBER 451057568:
+DATE ACTIVITY DESCRIPTION DEPOSITS WITHDRAWALS
+03/26 STRIPE/TRANSFER ST-Q0Z2E8I0R8S1 $52.17
+03/27 STRIPE/TRANSFER ST-U5B2N5Y8X8KO $150.94
+03/29 STRIPE/TRANSFER ST-OSL8G2K2C2M4 $104.34
+‘DAILY BALANGE SUMMARY ACCOUNT NUMBER: 451057568.
+DATE BALANCE DATE BALANCE DATE BALANCE
+03/01 $280,616.62 03/12 $288,751.87 03/21 $292,310.05
+03/04 $281,796.73 03/13 $289,485.21 03/22 $292,362.22
+03/05 $282,541.60 03/14 $290,168.36 03/25 $292,537.92
+03/06 $288,092.50 03/15 $290,560.61 03/26 $292,590.09
+03/07 $288,543.19 03/18 $290,848.52 03/27 $292,741.03
+03/08 $288,595.36 03/19 $291 ,476.51 03/29 $292,845.37
+03/11 $288,699.70 03/20 $292,205.71
+THANK: YOU FOR’ BANKING WITH. THE AMALGAMATED: BANK:
+WE APPRECIATE. YOUR BUSINESS.
+NRE ATK
+NRSC
+Set
+
 
 
 
 ## Page 6
 
-Humboldt Bay Harbor, Recreation & Conservation District {O22
-10200 CASH IN BANK, CHECKING, Period Ending 08/31/2024 C " OMY
-RECONCILIATION REPORT —_
-Reconciled on:
-Reconciled by: Mindy Hiley
-Any changes made to transactions after this date aren't included in this report.
-Summary USD
-Statement beginning DalaN Ce a essssutseumunnssstinsenenniiciiiiiscneniaissetiinnnaininnmniriiaeneniieneiannnennentaninitiinnnmnnuunenurannmuninnmnannrnme Or TIL AZ
-Interest Care a csasssstsssssssnesssseeseessisniennnessstinsteatsenstustrsnsesstneetiaeniacntaistsonsnensesinstsiausniusstneinnnnytaeiesiieiipineieesieitieuesnenenerenrieetueueninctienetennrnmenistiunsisusueemeniuasicannansnsdd 29
-Checks and payments cleared (0) cssmsmssimiasencnseeneenetstetitmetiginsrtiennesinnuetine tisieiestenitiinensteienttntcenienennetnentainssiimenustatuninissnnnuninaneniiinensunte niente OO
-Deposits and other credits cleared (2)... csusssssetuistnneenetenanieneetneinaneiistiiieentinianeneneittittateeetatnenistettisnsenrennitiniuenennctnieniinsistiniimitgninunnenanenmnenenenmanernass 2000.15
-Statement ending balance... cssassssossecsssrstseeisesstessssestssnenteeeieeteeeneseectennstsneussieustinsuseisernineneeneeieeinpneeuciaeesngeaeinetnennesntnenesneneeeitinneuarenessnartupieuatstnsinenuniaritenecsainaenenasen, Oop T1 EO
-Uniccleared transactions as of 08/31/2024 oo. ssussssuscsassntnissestuststssinunnenesinnssesstennianasinenieusneneponinonesstisnasisnneusnsttisienuesueatfniesiesittaanieuiasunsintninnieusustanessnuaennatiiuenaenent LOL TO
-Register balance as Of 08/31/2024 a ssasssutsnasrttetenssnetntitscnentnemnneaunrieestuiinnieieeintneneneineneentsnnrnneiteintenemetstisinenitstunnentinenunniinimeetnuneninunmmmnnnesnnne B49. 16
-Details
-Deposits and other credits cleared (2)
-DATE TYPE REF NO. PAYEE AMOUNT (USD)
-Deposit 1,663.40
-08/28/2024 Deposit _. 1,336.75
-Total 3,000.15
-Additional Information
-Uncleared checks and payments as of 08/31/2024
-DATE TYPE REF NO. PAYEE AMOUNT (USD)
-11/13/2012 Check ; 48521 7 - — Durant, Candace -167.75
-Total ~167.75
-
+@B . amalgamated 800-662-0860
+So ~a A Ve gl toe ae t va oan . ee A ame’ re ct vn
+) oank amalgamatedbank.com
+“~ 275 Seventh Avenue
+New York, NY 10001 Page 1 of 2
+Return Service Requested 514
+mma 00028726 MA218R03012 01 000000000
+NFOEC
+CoE
+Tae ACCOUNT SUMMARY’ 151057568.
+CENTER FOR THIRD WORLD: ORGANIZING —
+1714 FRANKLIN ST STE 100245 Account number 151057568
+OAKLAND CA 94612-3488 Statement date 02/29/24
+Checks/Items enclosed 0
+Balance $278,303.96
+ACCOUNT DETAILS: GOMMERCIAL LITE. GHEGKING: ACCOUNT NUMBER 151057568:
+Beginning Balance 02/01/24 $257,509.18
+Deposits/Misc Credits 17 $22,294.78
+Withdrawals/Misc Debits 4 $1,500.00
+**Ending Balance 02/29/24 $278,303.96
+Service Charge $0.00
+Average Balance $266, 141.00
+Enclosures 0
+‘CREDITS: ACCOUNT NUMBER 151057568:
+DATE ACTIVITY DESCRIPTION DEPOSITS WITHDRAWALS
+02/01 STRIPE/TRANSFER ST-C6Q8Z4F9D8P8 $10.58
+02/05 STRIPE/TRANSFER ST-V5Y2H5N9Y1 04 $50.68
+02/07 STRIPE/TRANSFER ST-N8FOQ3R8S9J8 $115.25
+02/09 STRIPE/TRANSFER ST-N7R6N1C1P2R5 $3,547.36
+02/12 STRIPE/TRANSFER ST-I6Y8U1C7L6Q4 $1,837.06
+02/13 STRIPE/TRANSFER ST-L8V1Q7Z8E7C4 $2,168.23
+02/14 STRIPE/TRANSFER ST-OSI7E7A7H4A3 $2,227.01
+02/15 STRIPE/TRANSFER ST-GOG4K3X8N1F 1 $1,385.40
+02/16 STRIPE/TRANSFER ST-I9K9YO0Q2S5N5 $1,731.75
+02/20 STRIPE/TRANSFER ST-V2M3U9Q1P3S3 $692.70
+02/21 STRIPE/TRANSFER ST-Z6V6Z0F9S0S9 $550.67
+02/22 STRIPE/TRANSFER ST-AQU0V1O6S9F9 $2,528.79
+02/23 STRIPE/TRANSFER ST-V9D2R8E2Y9Y5 $398.52
+02/26 STRIPE/TRANSFER ST-N2X3K1P406J3 $1,091.22
+02/27 STRIPE/TRANSFER ST-L8R9DSA7Q6D0 $52.17
+02/28 STRIPE/TRANSFER ST-G7X4I3W2H3Y8 $3,214.69
+02/29 STRIPE/TRANSFER ST-K1P1U9A1J5Q1 $692.70
+Co.
+AAC KELL CD
+ERR GLKBEK
+CREECH
+
 
 
 
 ## Page 7
 
-@tricountiesbank _Statement Ending 08/31/2024
-service With Solutions" RECE! ve 4UNIBOLDT BAY HARBOR Page 1 of 4
-P.O. Box 909, Chico CA 95927 7 __ ». Account Number:549110773 |
-ADDRESS SERVICE REQUESTED : Service With Solutions
-em nn 82 oR @. Speak witha _ann.609.4
-UBER. & GLO. ii 4-800-922-8742
-HUMBOLDT BAY HARBOR fy Automated = 4.944.999.0447
-PO BOX 1030 ol. Phone Banking:
-EUREKA CA 95502-1030 C] Online Banking: TriCountiesBank.com
-Ik Ey flogethenwWercanmmake aidiiferenceimithellivesym|
-ee BouCaliformiacommunitycollege:stud chts aammaaE
-Ae “A _a ughy tg ny a ae wl Meth eines eich 4 ~ 5 oan tafe zis “. Ce geht eer Se fee xp Bcc: Ca ca thé. a a _ ete a ei Hp |
-Bee his programrenablesstucentstolbecomalcadersionthell, campuscsscOnnect | <A
-emer Deersiwithiresources:thaticantovercon ebarriersvanciultimatelyy relpithemachieve,their aa |
-, we eee See ee ea eee aes ~r nt Abbe nig = aa are Jp SMR Patra A ite Pyoas a
-Meal olcarnmore-angtodonatervisitaricountiesBankicom/50m Reais be ae ¥ |
-Overall Balance Summary
-Account Type Account Number Ending Balance
-Public Funds Int Ckg Images 549110773 $29,117.51
-Public Funds Int Ckg Images - 549110773
-Account Summary - _ Interest Summary
-Date Description Amount Description Amount
-08/01/2024 Beginning Balance $26,117.13 Interest Earned From Through 08/31/2024
-3 Credit(s) This Period $3,000.38 Annual Percentage Yield Earned 0.01%
-- 0.Debit(s) This Period $0.00 Days in Statement Cycle 31
-08/31/2024 Ending Balance $29,117.51 —{nterest and/or Reward Paid $0.23
-7 : Interest Paid this Statement Cycle - $0.23
-Interest Paid Year-to-Date $1.13
-Deposits
-Date . Description ‘Amount
-08/28/2024 DEPOSIT $1,336.75
-| eeeweee | a Bae IE '
-| NMiS#458732 en pt a ee 7 a er : Ab i a . Member FDIC 7
+IMPORTANT INFORMATION ABOUT THIS ACCOUNT STATEMENT AND YOUR RIGHTS
 
+1. Review at Once: Notify the Bank in writing within 30 days after we mail or make this statement available to you of any irregularities in your account
+statement, or you may lose valuable rights. See the Account Opening Disclosures applicable to your account for details about this and other time
+limitations regarding notice or irregularities. (This paragraph does not apply to electronic funds or wire transfers.)
+
+2. Electronic Funds Transfers under Regulation E (for Consumer accounts only): In case of errors or questions about your Electronic Funds
+Transfers, call our Electronic Banking Group (EBG) at 800-662-0860 or write us (Electronic Banking Group, Amalgamated Bank, 275 Seventh
+Avenue, New York, NY 10001) as soon as you can, if you think your statement or receipt is wrong or if you need more information about a transfer
+on the statement or receipt.
+
+\We must hear from you no later than 60 days after we sent you the FIRST statement on which the error or problem appeared. Tell us:
+
+e Your name and account number.
+
+° The error or transfer you are unsure about, and explain as clearly as you can why you believe there is an error or why you need more information.
+
+e The dollar amount of the suspected error.
+
+We will investigate your complaint and correct any error promptly. If we take more than 10 business days to do this, we will provisionally credit your
+
+account for the amount you think is in error, so that you will have the use of the money during the time it takes us to complete our investigation.
+
+Confirmation of Direct Deposit: If you have arranged to have your account credited by regularly scheduled (at least once every 60 days)
+
+electronic funds transfers (for example, direct deposit of social security, pension or payroll) and need to confirm if the deposit was made, you can
+
+contact our call center at 800-662-0860.
+
+3. Wire Transfers: In case of errors or if you have questions about particular wire transfer transactions, contact EBG at 800-662-0860.
+
+4. For all other inquiries: Please contact our call center at 800-662-0860.
+
+5. NY State Banking Account Disclosure for Affordable Checking:
+
+° There is no limit to the number of withdrawals permitted on this account.
+
+e Our fee for using non-Amalgamated, non-Allpoint® and international ATMs is $3.00 per transaction, including balance inquiry. Additional fees
+from other institutions may apply for non-Amalgamated, non-Allpoint® and international ATM transactions.
+
+e A withdrawal is deemed made when it is recorded on the bank's books, which may not necessarily be the actual date of the transaction.
+
+IMPORTANT INFORMATION ABOUT MONEY MARKET AND SAVINGS ACCOUNTS
+
+There is no limit to the number of in-person deposits or withdrawals you can make to or from these accounts. Transfer limitations listed below are only
+
+applicable to Commercial accounts.
+
+e Transfers from Savings Accounts to another account or to third parties by preauthorized, automatic, telephone, or electronic transfers are limited
+to a combined total of six (6) per month. Federal regulations require that if you violate the above-described limitations, we may have to close or
+reclassify your account to a checking account.
+
+° Transfers from Money Market Accounts to another account or to third parties by preauthorized, automatic or telephone transfers are limited to a
+combined total of six (6) per month; transfers may be made by check, draft, Debit Card or similiar electronic means to third parties. Federal
+regulations require that if you violate the above-described limitations, we may have to close or reclassify your account to a checking account.
+
+We reserve the right to require no fewer than 7 days’ notice in writing before each withdrawal from an interest-bearing account other than a time deposit,
+
+or from any other savings account as defined by Regulation D. (The law requires us to reserve this right, but it is not our general policy to use it.)
+
+NOTIFY THE BANK IMMEDIATELY IN WRITING TO CHANGE.OR CORRECT YOUR ADDRESS FDIC a
+
+For branch listings, visit amalgamatedbank.com or call 800-662-0860. Senet: SLENDER
+
+List outstanding checks Enter present balance
+Check Number Amount
+Plus: Deposits made since
+
+statement date $
+
+Balance checkbook
+
+as of month end $
+
+es aa O——
+
+Total
+
 
 
 
 ## Page 8
 
-HUMBOLDT BAY HARBOR 549110773 Statement Ending 08/31/2024 Page 2 of 4
-THIS STATEMENT SHALL BE CONSIDERED CORRECT AND TRI COUNTIES BANK SHALL NOT BE LIABLE FOR ANY DISCREPANCIES IF NOT
-REPORTED TO THE BANK WITHIN 30 CALENDAR DAYS FROM THE DATE THIS STATEMENT WAS MAILED OR MADE AVAILABLE. RESPONSE TIME
-FOR REPORTING ERRORS OR INQUIRIES REGARDING ELECTRONIC FUND TRANSFERS OR YOUR AUTOMATIC CASH RESERVE ARE SEPARATELY
-DISCLOSED. ALL ITEMS DEPOSITED ARE SUBJECT TO RECEIPT OF FINAL PAYMENT.
-OUTSTANDING CHECKS
-HERE’S AN EASY WAY TO BALANCE YOUR CHECKBOOK: ITEM NO. AMOUNT
-(A) UPDATE CHECKBOOK BALANCE -
-* Subtract from your checkbook balance any monthly service charges, other bank charges and all rt
-automatic withdrawals/payments not previously deducted. a ee
-¢ Add to your checkbook balance all automatic deposits, other deposits and automatic cash reserve advances
-(B) VERIFY OUTSTANDING CHECKS cr ff |
-* Your checks are listed on the front of this statement in check number sequence or in date paid sequence |_|
-if the check number is not available. An asterisk (*) indicates missing check number(s). | |
-* Check off each check listed on your check register or stubs. a
-« List in the space provided all outstanding checks. Add these and enter total.
-(©) RECONCILE BALANCES ee ee ee ee
-¢ Enter the ending balance as shown on the front of this statement. (+) PS rf
-* Add all deposits which are not shown on this statement. rn Fe a
-* Enter total of outstanding checks described in (B) above and (+)
-of te E
-(D) IF YOU DID NOT BALANCE
-* Verify that the previous month’s statement was balanced properly.
-* Review all additions and subtractions for errors as well as balances brought forward in your checkbook register. ;
-* Record any outstanding transactions from prior statements.
-* Determine that all credits (including Automatic Deposits) shown in the “Deposits” and “Other Credits” sections of this statement are entered in
-your checkbook.
-* Compare the amount of each item listed on this statement against the amounts entered in your checkbook.
-The following notices apply if your account is maintained primarily for personal, family or household purposes.
-IN CASE OF ERRORS OR QUESTIONS ABOUT YOUR ELECTRONIC TRANSFERS
-Call us at 1-800-922-8742 or write to us at Tri Counties Bank, Customer Service Department, P. O. Box 909 Chico, CA 95927 as soon as you
-can, if you think your statement or receipt is wrong or if you need more information about a transfer on the statement or receipt. We must hear
-from you no later than 60 days after we sent you the FIRST statement on which the error or problem appeared.
-(1) Tell us your name and account number {if any).
-(2) Describe the error or the transfer you are unsure about, and explain as clearly as you can why you believe it is an error or why you need
-more information.
-(3) Tell us the dollar amount of the suspected error.
-We will investigate your complaint and will correct any error promptly. If we take more than 10 business days to do this, we will credit your account for
-the amount you think is in error; so that you will have the use of the money during the time it takes us to complete our investigation.
-Important Notice About Your Tri Counties Bank Visa® Debit Card
-Your Card is enabled with non-Visa debit transaction processing. This means you may use your Card ona PIN-Debit Network without using a PIN or
-with your PIN, Examples of the types of actions you may be required to make to initiate a Card transaction on a PIN-Debit Network include initiating
-a payment directly with the biller, possibly via telephone, Internet, or kiosk locations. The non-Visa Debit Network(s) for which such transactions are
-enabled is the Accel® network.
-Examples of the types of actions that you may be required to make to initiate a transaction on your Card include:
-* Signing a receipt
-¢ Providing a Card number, expiration date and card verification code over the phone or the internet
-* Swiping your Card through a point-of-sale (POS) terminal and entering your PIN or signing for your purchase
-The provisions of your agreement with us relating only to Visa transactions are not applicable to transactions that are conducted on networks other
-than a Visa or Plus network, such as a PIN-Debit Network. This means that for transactions that are processed through networks other than Visa or Plus,
-the above Visa zero dollar liability protection rules do not apply, even if you did not have to enter a PIN when you conducted the transaction.
+@x amalgamated 800-662-0860
+‘ED) painlz amalgamatedbank.com
+“275 Seventh Avenue
 
+New York, NY 10001 Page 2 of 2
 
+NON-CHEGK: DEBITS AGGOUNT NUMBER 451057568:
 
+DATE ACTIVITY DESCRIPTION DEPOSITS WITHDRAWALS
 
-## Page 9
+02/13 PAYPAL/INST XFER $1,500.00
 
-_. tricounties bank
-Statement Ending 08/31/2024
+‘DAILY BALANCE SUMMARY AGGOUNT NUMBER 451057568:
 
-HUMBOLDT BAY HARBOR Page 3 of 4
-Account Number:549110773
+DATE BALANCE DATE BALANCE DATE BALANCE
 
-Public Funds Int Ckg Images - 549110773 (continued)
+02/01 $257,519.76 02/14 $265,965.35 02/23 $273,253.18
 
-Other Credits
+02/05 $257,570.44 02/15 $267 350.75 02/26 $274,344.40
 
-Date Description Amount
+02/07 $257,685.69 02/16 $269,082.50 02/27 $274,396.57
 
-08/30/2024. INT. PMT SYS-GEN -_ a cas ee cca Se oo $0.23
+02/09 $261 ,233.05 02/20 $269,775.20 02/28 $277,611.26
 
+02/12 $263,070.11 02/21 $270,325.87 02/29 $278,303.96
 
+02/13 $263,738.34 02/22 $272,854.66
+THANK. YOU-FOR' BANKING WITH THE AMALGAMATED. BANK.
+WE. APPREGIATE YOUR BUSINESS.
 
-
-## Page 10
-
-_.. tricounties bank
-Statement Ending 08/31/2024
-HUMBOLDT BAY HARBOR Page 4 of 4
-Account Number:549110773
-End of Statement
-
+PDE EEN
+NDR HALE
+COREE
+
 
