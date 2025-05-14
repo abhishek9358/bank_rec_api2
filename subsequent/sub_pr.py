@@ -197,7 +197,7 @@ def SubSequentResponse1(txt, max_retries=3):
     for attempt in range(max_retries):
         try:
             client = genai.Client(api_key=API_KEY)
-            model = "gemini-2.0-flash-lite"
+            model = "models/gemini-1.5-flash"
             contents = [
                 types.Content(
                     role="user",
