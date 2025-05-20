@@ -68,11 +68,11 @@ def extract_text_from_pdf(pdf_path):
             if not extracted_text:
                 print("yes it was in loop")
                 # imag = convert_from_path(pdf_path, output_folder="temp_images", output_file="outfile_", fmt="png", dpi=300)
-                imag = convert_from_path(pdf_path, output_folder="subsequent/temp_images", output_file="outfile_", fmt="png", dpi=300)
+                imag = convert_from_path(pdf_path, output_folder="temp_images", output_file="outfile_", fmt="png", dpi=300)
                 print("saved images")
 
                 # list_dir = os.listdir('temp_images')
-                list_dir = os.listdir('subsequent/temp_images')
+                list_dir = os.listdir('temp_images')
                 pp = 1
                 list_dir = sorted(list_dir)
                 # for file_name in list_dir:
@@ -83,7 +83,7 @@ def extract_text_from_pdf(pdf_path):
                 #     os.remove(f'temp_images/{file_name}')
 
                 for file_name in list_dir:
-                    img_path = os.path.join("subsequent/temp_images", file_name)
+                    img_path = os.path.join("temp_images", file_name)
                     print(file_name, 'dd')
 
                     if not os.path.exists(img_path):
