@@ -12,8 +12,13 @@ import google.generativeai as genrate
 from google import genai
 from google.genai import types
 import json
+
+from dotenv import load_dotenv
+load_dotenv()
+
+gemini_api_key = os.getenv("GEMINI_API_KEY")
 # === Gemini Config ===
-genrate.configure(api_key="AIzaSyB7n-1IA7ms7i_IE6nFrhUzsJ81LrVxF_k")
+genrate.configure(api_key=gemini_api_key)
 model = genrate.GenerativeModel("models/gemini-1.5-flash")
 
 def gemini_response(prompt):
@@ -396,7 +401,7 @@ def generate(pdf_path, fiscal_date):
             print("❌ File upload failed:", upload_error)
             raise ValueError("Gemini file upload failed.")
 
-        model = "gemini-2.0-flash"
+        model = "models/gemini-1.5-flash"
         contents = [
             types.Content(
                 role="user",
