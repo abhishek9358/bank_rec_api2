@@ -1,4 +1,5 @@
 import json
+import os
 
 
 
@@ -64,6 +65,8 @@ def HandleJsonForResp(json_path):
                  final_resp["total_2"] =  item[1]          
                  
         print(final_resp)
+        os.remove('data.json') 
+
         return final_resp
     except Exception as err:
         print("something went wrong in the process", err)

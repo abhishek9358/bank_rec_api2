@@ -168,7 +168,7 @@
 
     
 
-# # SubSequentResponse("output/sub.md")
+# SubSequentResponse("/home/nova/projects/reconsiliation_project/bank_rec_api2/output/sub.md")
 
 
 import base64
@@ -369,6 +369,7 @@ async def SubSequentResponse(md_path):
         return False
 
 
+
 # To run from script directly
-# if __name__ == "__main__":
-#     asyncio.run(SubSequentResponse("output/sub.md"))
+if __name__ == "__main__":
+    asyncio.run(SubSequentResponse("/home/nova/projects/reconsiliation_project/bank_rec_api2/output/sub.md"))

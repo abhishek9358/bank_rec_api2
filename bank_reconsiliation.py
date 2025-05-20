@@ -234,7 +234,7 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
                 writer.write(f)
 
             # Convert to images
-            images = convert_from_path(temp_pdf_path, dpi=500, fmt="jpeg")
+            images = convert_from_path(temp_pdf_path, dpi=500, fmt="png")
 
 
                 

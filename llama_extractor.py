@@ -25,7 +25,7 @@ def HandleLlamaExtract(pdf_path):
         with open("data.json", 'w') as _file:
             json.dump(result.data, _file) # type: ignore
 
-        print(result.data)    
+        print(result.data)   
 
         return result.data # type: ignore
     except Exception as error:

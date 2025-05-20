@@ -7,6 +7,9 @@ from pytesseract import Output
 import re
 import fitz
 import numpy as np
+import os
+import cv2
+
 
 def preprocess_image(path):
     img = cv2.imread(path)
@@ -64,16 +67,55 @@ def extract_text_from_pdf(pdf_path):
 
             if not extracted_text:
                 print("yes it was in loop")
-                imag = convert_from_path(pdf_path, output_folder="temp_images", output_file="outfile_", fmt="png", dpi=300)
-                list_dir = os.listdir('temp_images')
+                # imag = convert_from_path(pdf_path, output_folder="temp_images", output_file="outfile_", fmt="png", dpi=300)
+                imag = convert_from_path(pdf_path, output_folder="subsequent/temp_images", output_file="outfile_", fmt="png", dpi=300)
+                print("saved images")
+
+                # list_dir = os.listdir('temp_images')
+                list_dir = os.listdir('subsequent/temp_images')
                 pp = 1
                 list_dir = sorted(list_dir)
+                # for file_name in list_dir:
+                #     print(file_name, 'dd')
+                #     text += f"\n\n## Page {pp}\n\n"
+                #     text += Ocr_extract(f"temp_images/{file_name}") + "\n\n"
+                #     pp  += 1
+                #     os.remove(f'temp_images/{file_name}')
+
                 for file_name in list_dir:
+                    img_path = os.path.join("subsequent/temp_images", file_name)
                     print(file_name, 'dd')
+
+                    if not os.path.exists(img_path):
+                        print(f"❌ File not found: {img_path}")
+                        continue
+
+                    # Check if image can be read before running OCR
+                    test_img = cv2.imread(img_path)
+                    if test_img is None:
+                        print(f"❌ Failed to read image: {img_path}")
+                        continue
+
+                    # Now safely extract text
                     text += f"\n\n## Page {pp}\n\n"
-                    text += Ocr_extract(f"temp_images/{file_name}") + "\n\n"
-                    pp  += 1
-                    os.remove(f'temp_images/{file_name}')
+                    try:
+                        text += Ocr_extract(img_path) + "\n\n"
+                    except Exception as e:
+                        print(f"⚠️ OCR failed for {file_name}: {e}")
+                    pp += 1
+
+                    # Optionally remove image after successful OCR
+                    os.remove(img_path)
+
+
+
+
+
+
+
+
+
+
                 # for page_num in range(len(pdf_doc)):
                 #     page = pdf_doc[page_num]
                 #     for img_index, img in enumerate(page.get_images(full=True)):
@@ -81,7 +123,8 @@ def extract_text_from_pdf(pdf_path):
                 #         base_image = pdf_doc.extract_image(xref)
                 #         image_bytes = base_image["image"]
                 #         image_ext = base_image["ext"]
-                #         image_path = os.path.join("temp_images", f"page_{page_num + 1}_img_{img_index + 1}.{image_ext}")
+                #         image_path = os.path.join("/home/nova/projects/reconsiliation_project/bank_rec_api2/subsequent/temp_images",
+                #                                     f"outfile_0001-{page_num + 1:02}.png")
                 #         with open(image_path, "wb") as f:
                 #             f.write(image_bytes)
 
