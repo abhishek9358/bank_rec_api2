@@ -371,5 +371,5 @@ async def SubSequentResponse(md_path):
 
 
 # To run from script directly
-if __name__ == "__main__":
-    asyncio.run(SubSequentResponse("/home/nova/projects/reconsiliation_project/bank_rec_api2/output/sub.md"))
+# if __name__ == "__main__":
+#     asyncio.run(SubSequentResponse("/home/nova/projects/reconsiliation_project/bank_rec_api2/output/sub.md"))
