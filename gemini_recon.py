@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # STEP 1: Configure Gemini API
-GOOGLE_API_KEY = "AIzaSyAo_VoXeSX3WNB9W5hyj_0OUosIL4abVko"  # ⬅️ Replace with your Gemini API key
+GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")  # ⬅️ Replace with your Gemini API key
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # STEP 2: Load Gemini Model with file capabilities
@@ -66,9 +66,15 @@ You are an expert financial data extraction AI. Your primary goal is to meticulo
     *   Your final output MUST be a single, valid JSON object that strictly adheres to the provided schema.
     *   Do not include any conversational text, explanations, apologies, or markdown formatting (like ```json) before or after the JSON object.
 
-**Final Review:** Before finalizing, mentally (or actually, if you could) re-scan the identified sections in the document text and compare them against your extracted items to ensure no line items were missed. Pay special attention to the last few items in each list.
+7.  **Extract ALL Line Items Within Each Section:**
+    *   When you identify a target section header (e.g., "Uncleared checks and payments as of 12/31/2022"):
+        *   **Scan line by line beneath this header.**
+        *   **For each line that appears to be a transaction item:** Extract its details (date, description, amount).
+        *   **Continue this scanning process** until you clearly reach the "Total" for this specific list of uncleared checks/payments, or until a new major section header (like "Uncleared deposits") begins.
+        *   Do not assume a section ends after finding just one item if more line items follow before a clear section terminator.
+    *   For instance, if under "in the targetted section" there's an item dated 05/01/2022 and THEN another item dated 08/31/2022 before the 'Total' line for that section, BOTH items must be extracted individually.
 
-**JSON Schema:**
+    **JSON Schema:**
 {
   "additionalProperties": false,
   "properties": {
