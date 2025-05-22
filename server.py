@@ -151,12 +151,4 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
          }
     
 
-#  If any section is not found (uncleared checks, deposits, suspense), return an empty array `[]`.
-# - All date formats must be ISO format (`YYYY-MM-DD`).
-# - All amounts must be string numbers like `"1200.00"`.
-# - The total fields (`total_0`, `tota_1`, `total_2`) must always be present, default to `"0"` if nothing found.
-# - Respond only with raw JSON output. No markdown, explanation, or extra text.
-# - Don't be take a uncleared_checks after, uncleared_deposits after, so don.t take a "after" section entries only take a "as of" section entries.
-# - Ensure that no one entry will not be missing from the these targeted sections.
-# - Extract a each and every entry according to the schema. 
   
