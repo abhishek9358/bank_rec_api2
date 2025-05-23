@@ -74,6 +74,7 @@ You are an expert financial data extraction AI. Your primary goal is to meticulo
         *   Do not assume a section ends after finding just one item if more line items follow before a clear section terminator.
     *   For instance, if under "in the targetted section" there's an item dated 05/01/2022 and THEN another item dated 08/31/2022 before the 'Total' line for that section, BOTH items must be extracted individually.
 
+8. Don't be take a "Checks and payments cleared"  , "Deposits and other credits cleared", so don.t take a "after" section entries only take a "as of" section entries.  
     **JSON Schema:**
 {
   "additionalProperties": false,
