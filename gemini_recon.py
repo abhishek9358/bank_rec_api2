@@ -74,7 +74,16 @@ You are an expert financial data extraction AI. Your primary goal is to meticulo
         *   Do not assume a section ends after finding just one item if more line items follow before a clear section terminator.
     *   For instance, if under "in the targetted section" there's an item dated 05/01/2022 and THEN another item dated 08/31/2022 before the 'Total' line for that section, BOTH items must be extracted individually.
 
-8. Don't be take a "Checks and payments cleared"  , "Deposits and other credits cleared", so don.t take a "after" section entries only take a "as of" section entries.  
+    
+8.  **CRITICAL INSTRUCTION FOR SCHEMA ADHERENCE:**
+        Your final JSON output MUST strictly follow the schema definitions.
+        *   For `uncleared_checks`, ONLY include items explicitly found under headers like "uncleared checks and payments AS OF mm/dd/yyyy" or "Outstanding Checks/Vouchers".
+        *   For `uncleared_deposits`, ONLY include items explicitly found under headers like "uncleared deposit and other credits as of mm/dd/yyyy" or "Outstanding Other Cash Items".
+        *   For `suspense_items`, ONLY include items explicitly found under "Outstanding Suspense Items".
+
+  **EXCLUDE ALL OTHER ITEMS:** If items are listed under different headers, such as "Deposits and other credits CLEARED" or "Checks and payments CLEARED", they DO NOT BELONG in the `uncleared_checks`, `uncleared_deposits`, or `suspense_items` arrays. In such cases, these arrays in your output JSON should be empty (`[]`) unless a section with the exact "uncleared" or "outstanding" phrasing is also present.
+    
+9. Don't be take a "Checks and payments cleared"  , "Deposits and other credits cleared", so don.t take a "after" section entries only take a "as of" section entries. if only these section are only avalaible in the document so pass the "0". "But ensure that not provide these sections entry in any condition".
     **JSON Schema:**
 {
   "additionalProperties": false,
@@ -86,7 +95,7 @@ You are an expert financial data extraction AI. Your primary goal is to meticulo
         "properties": {
           "date": { "description": "ISO formatted date", "type": "string" },
           "description": { "description": "transaction description", "type": "string" },
-          "amount": { "description": "transaction amount", "type": "string" }
+          "amount": { "description": "transaction amount", "type": "string" }bu
         },
         "required": ["date", "description", "amount"],
         "type": "object"
