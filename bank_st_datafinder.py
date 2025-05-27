@@ -101,6 +101,9 @@ Format your response like:
 Page 1: 12/31/2022
 Page 2: No period ending date found
 Page 3: 12/31/2022
+
+
+
 ...
 """
 
@@ -122,6 +125,20 @@ def group_pages_by_detected_dates(page_dates, target_date_str):
     grouped_pages = []
     capture = False
 
+    # for page_num in sorted(page_dates.keys()):
+    #     detected = page_dates[page_num]
+
+    #     if detected == target_date_str:
+    #         print(f"✅ Target period start detected at page {page_num}")
+    #         capture = True
+
+    #     if capture:
+    #         grouped_pages.append(page_num)
+
+    #     if detected not in ["No period ending date found", target_date_str] and capture:
+    #         print(f"🚫 Different period detected at page {page_num}, stopping capture")
+    #         break
+
     for page_num in sorted(page_dates.keys()):
         detected = page_dates[page_num]
 
@@ -141,7 +158,8 @@ def group_pages_by_detected_dates(page_dates, target_date_str):
 
 
 
-# 
+
+
 
 
 
@@ -179,25 +197,30 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
                 writer.write(f)
 
             # Convert to images
-            images = convert_from_path(temp_pdf_path, dpi=500, fmt="png")
+            images = convert_from_path(temp_pdf_path, dpi=300, fmt="png")
 
 
                 
 
-            # Enhance each image
-            enhanced_images = []
-            for img in images:
-                img = img.filter(ImageFilter.MedianFilter(size=3))
-                img = ImageEnhance.Sharpness(img).enhance(3.0)
-                img = ImageEnhance.Contrast(img).enhance(1.8)
-                img = ImageEnhance.Brightness(img).enhance(1.2)
-                enhanced_images.append(img.convert("RGB"))
+            # # Enhance each image
+            # enhanced_images = []
+            # for img in images:
+            #     img = img.filter(ImageFilter.MedianFilter(size=3))
+            #     img = ImageEnhance.Sharpness(img).enhance(3.0)
+            #     img = ImageEnhance.Contrast(img).enhance(1.8)
+            #     img = ImageEnhance.Brightness(img).enhance(1.2)
+            #     enhanced_images.append(img.convert("RGB"))
 
             # # Save to enhanced PDF
-            enhanced_images[0].save(
+            # enhanced_images[0].save(
+            #     enhanced_pdf_path,
+            #     save_all=True,
+            #     append_images=images[1:]
+            # )
+            images[0].save(
                 enhanced_pdf_path,
                 save_all=True,
-                append_images=enhanced_images[1:]
+                append_images=images[1:]
             )
 
 
@@ -215,75 +238,10 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
 
 
 
-# def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
-#     import os
-#     from PyPDF2 import PdfReader, PdfWriter
-#     from pdf2image import convert_from_path
-#     from PIL import Image, ImageEnhance
-#     import tempfile
-
-#     print("📦 Saving filtered PDF...")
-
-#     reader = PdfReader(input_pdf_path)
-#     writer = PdfWriter()
-#     valid_page_numbers = []
-
-#     for page_number in page_numbers:
-#         if 1 <= page_number <= len(reader.pages):
-#             writer.add_page(reader.pages[page_number - 1])
-#             valid_page_numbers.append(page_number)
-#         else:
-#             print(f"⚠️ Skipping invalid page: {page_number}")
-
-#     if not valid_page_numbers:
-#         print("❌ No valid pages to extract. Aborting.")
-#         return None
-
-#     os.makedirs(output_dir, exist_ok=True)
-#     input_filename = os.path.splitext(os.path.basename(input_pdf_path))[0]
-#     filtered_pdf_path = os.path.join(output_dir, f"{input_filename}_filtered.pdf")
-
-#     with open(filtered_pdf_path, "wb") as f:
-#         writer.write(f)
-
-#     print(f"✅ Filtered PDF saved: {filtered_pdf_path}")
-
-#     # Step 2: Enhance the filtered PDF
-#     print("🎨 Enhancing PDF...")
-
-#     try:
-#         images = convert_from_path(filtered_pdf_path, dpi=500, fmt="png")
-#         if not images:
-#             raise ValueError("Filtered PDF has no pages")
-
-#         enhanced_images = []
-#         ct = 0
-#         for img in images:
-
-#             img = ImageEnhance.Sharpness(img).enhance(2.0)
-#             img = ImageEnhance.Contrast(img).enhance(1.5)
-#             img = ImageEnhance.Brightness(img).enhance(1.2)
-#             enhanced_images.append(img.convert("RGB"))
-#             ct += 1
-
-#         enhanced_pdf_path = os.path.join(output_dir, f"{input_filename}_enhanced.pdf")
-#         enhanced_images[0].save(enhanced_pdf_path, save_all=True, append_images=enhanced_images[1:])
-
-#         print(f"🎉 Enhanced PDF saved: {enhanced_pdf_path}")
-#         with open(enhanced_pdf_path, "wb") as f:
-#             writer.write(f)
-#         # os.remove(filtered_pdf_path)    
-#         return enhanced_pdf_path
-#         # return filtered_pdf_path0
-
-    
-#     except Exception as e:
-#         print("❌ Error during enhancement:", e)
-#         return filtered_pdf_path
 
 
 
-def run_pdf_filter_pipeline(pdf_path: str, target_date_str: str, output_dir: str = "output_folder"):
+def run_pdf_filter_pipeline_st(pdf_path: str, target_date_str: str, output_dir: str = "output_folder"):
     """
     Full Pipeline to:
     1. Extract headers

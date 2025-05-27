@@ -13,6 +13,7 @@ import json
 from bank_reconsiliation import run_pdf_filter_pipeline
 import time 
 from gemini_recon import upload_pdf_to_gemini, query_with_file
+from bank_st_datafinder import run_pdf_filter_pipeline_st
 
 from subsequent.index import  HandleSubSequent
 
@@ -75,7 +76,7 @@ async def upload_pdf(file: UploadFile = File(...),
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
 
-        output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
+        output_path = run_pdf_filter_pipeline_st(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
        
         gen = generate(output_path)
