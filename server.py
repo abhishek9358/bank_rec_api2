@@ -66,39 +66,19 @@ async def upload_pdf(file: UploadFile = File(...),
 
         return preprocessd
 
-    
-
 
 @app.post("/upload_st")
-async def process_and_extract_pdf(
-    file: UploadFile = File(...),
-    fiscal_date: str = Form(...)
-):
-    # === Save Uploaded File ===
-    input_pdf_path = f"uploaded_{file.filename}"
-    with open(input_pdf_path, "wb") as f:
-        shutil.copyfileobj(file.file, f)
+async def upload_pdf(file: UploadFile = File(...),
+                    fiscal_date: str = Form(...)):
+    
+        file_location = os.path.join(UPLOAD_DIR, file.filename)
+        with open(file_location, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
 
-    # === Parse Reconciliation Date ===
-    try:
-        rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
-    except ValueError:
-        return {"error": "Invalid date format. Use MM/DD/YYYY."}
+        output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
-    base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
-    cleaned_pdf = f"{base_name}_annoted.pdf"
-
-    try:
-        # === PDF Cleanup Pipeline ===
-        
-
-        temp_img_dir = "temp_images_st"
-
-        output_dir = "output_uploaded"
-        filtered_pdf = save_filtered_pdf(input_pdf_path, output_dir, [1,2,3,4])
-        print("working 0")
        
-        gen = generate(filtered_pdf, fiscal_date)
+        gen = generate(output_path)
         print(gen)
 
         print("working 1")
@@ -114,9 +94,59 @@ async def process_and_extract_pdf(
        
         return {"data": gen}
 
-    except Exception as e:
-        print(e, "error in api")
-        return JSONResponse(content={"error": str(e)}, status_code=500)   
+        
+
+    
+
+
+# @app.post("/upload_st")
+# async def process_and_extract_pdf(
+#     file: UploadFile = File(...),
+#     fiscal_date: str = Form(...)
+# ):
+#     # === Save Uploaded File ===
+#     input_pdf_path = f"uploaded_{file.filename}"
+#     with open(input_pdf_path, "wb") as f:
+#         shutil.copyfileobj(file.file, f)
+
+#     # === Parse Reconciliation Date ===
+#     try:
+#         rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
+#     except ValueError:
+#         return {"error": "Invalid date format. Use MM/DD/YYYY."}
+
+#     base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
+#     cleaned_pdf = f"{base_name}_annoted.pdf"
+
+#     try:
+#         # === PDF Cleanup Pipeline ===
+        
+
+#         temp_img_dir = "temp_images_st"
+
+#         output_dir = "output_uploaded"
+#         filtered_pdf = save_filtered_pdf(input_pdf_path, output_dir, [1,2,3,4])
+#         print("working 0")
+       
+#         gen = generate(filtered_pdf, fiscal_date)
+#         print(gen)
+
+#         print("working 1")
+#         # === Cleanup ===
+#         try:
+#             os.remove(input_pdf_path)
+#             os.remove(filtered_pdf)  # Optional
+#             cleanup_temp_images("temp_images_st")
+#             cleanup_temp_images("temp_cleaned_images")
+#         except Exception as err:
+#             print(err, "file remove error")
+#             pass
+       
+#         return {"data": gen}
+
+#     except Exception as e:
+#         print(e, "error in api")
+#         return JSONResponse(content={"error": str(e)}, status_code=500)   
     
 
 @app.post("/upload_sub/")

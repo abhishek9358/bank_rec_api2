@@ -86,7 +86,34 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 gen.configure(api_key=GEMINI_API_KEY)
 
-def generate(pdf_path, fiscal_date, retries=5, delay=2):
+# def generate(pdf_path, fiscal_date, retries=5, delay=2):
+#     for attempt in range(retries):
+#         try:
+#             client = genai.Client(api_key=GEMINI_API_KEY)
+
+#             files = [client.files.upload(file=pdf_path)]
+
+#             model = "models/gemini-1.5-flash"
+#             contents = [
+#                 types.Content(
+#                     role="user",
+#                     parts=[
+#                         types.Part.from_uri(
+#                             file_uri=files[0].uri,  # type: ignore
+#                             mime_type=files[0].mime_type,  # type: ignore
+#                         ),
+#                         types.Part.from_text(text=f"Extract endingbalance as of {fiscal_date}"),
+#                         types.Part.from_text(text="""extract data from provided document
+# Return in given json schema:
+# {
+#   endingbalance: string,
+#   statementdate: string,
+#   accountnumber: string,
+#   Bankname: string
+# }
+
+
+def generate(pdf_path,  retries=5, delay=2):
     for attempt in range(retries):
         try:
             client = genai.Client(api_key=GEMINI_API_KEY)
@@ -102,7 +129,6 @@ def generate(pdf_path, fiscal_date, retries=5, delay=2):
                             file_uri=files[0].uri,  # type: ignore
                             mime_type=files[0].mime_type,  # type: ignore
                         ),
-                        types.Part.from_text(text=f"Extract endingbalance as of {fiscal_date}"),
                         types.Part.from_text(text="""extract data from provided document
 Return in given json schema:
 {
@@ -111,6 +137,8 @@ Return in given json schema:
   accountnumber: string,
   Bankname: string
 }
+
+Note :- if in the document have a multiple ending balanse so only extract the first ending balance from the document and pass this.
 """),
                     ],
                 ),
