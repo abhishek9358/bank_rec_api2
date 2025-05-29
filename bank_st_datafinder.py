@@ -103,6 +103,7 @@ Instructions:
 - If no period ending date is found for a page, respond with "No period ending date found" for that page.
 - If the date is in the Month DD, YYYY format, convert it to MM/DD/YYYY.
     For example, convert June 30, 2023 to 06/30/2023.
+- if you find a date like "e.g: Previous period ending date: 12/31/2022",   so don't be extract this type of date, just extract the date which is in the header. 
 
 Format your response like:
 Page 1: 12/31/2022
