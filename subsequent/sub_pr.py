@@ -299,7 +299,7 @@ def SubSequentResponse1(txt, max_retries=3):
                     types.Part.from_text(
                         text="""You will extract each entry from provided context .
 
-        and DO NOT HULICINATE"""
+        and DO NOT HULICINATE also consider decimal values like $44.22 to 44.33 not like 4422""" 
                     ),
                 ],
             )
