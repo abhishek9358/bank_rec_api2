@@ -29,6 +29,7 @@ model = genai.GenerativeModel('models/gemini-1.5-flash')
 
 from PIL import Image, ImageEnhance, ImageOps
 
+
 def extract_header_text(pdf_path):
     print("🔍 Improved header text extraction...")
     header_texts = []
@@ -38,13 +39,15 @@ def extract_header_text(pdf_path):
                 text = page.extract_text()
                 config = "--oem 3 --psm 6"
                 if text and len(text.strip()) > 30:
-                    lines = text.split("\n")[:10]
+                    lines = text.split("\n")[:50]
                     header = "\n".join(lines)
+                    print("--Plumber Processeed --")
                 else:
-                    image = page.to_image(resolution=300).original
+                    print("--Pytesseract Processing --")
+                    image = page.to_image(resolution=300).original #300
                     width, height = image.size
 
-                    crop_area = (0, 0, width, int(height * 0.2))
+                    crop_area = (0, 0, width, int(height * 0.5))
                     cropped_image = image.crop(crop_area)
 
                     gray = ImageOps.grayscale(cropped_image)
@@ -62,6 +65,8 @@ def extract_header_text(pdf_path):
             except Exception as e:
                 print(f"❌ Failed to extract header from page {i + 1}: {e}")
     return header_texts
+
+
 
 def split_into_chunks(header_texts, chunk_size=10):
     print("✂️ Splitting header text into chunks...")
@@ -96,6 +101,8 @@ Each header belongs to a different page. Below is the text:
 Instructions:
 - For each page (mentioned like [Page 1], [Page 2], etc.), detect the **period ending date** mentioned in the header (in MM/DD/YYYY format).
 - If no period ending date is found for a page, respond with "No period ending date found" for that page.
+- If the date is in the Month DD, YYYY format, convert it to MM/DD/YYYY.
+    For example, convert June 30, 2023 to 06/30/2023.
 
 Format your response like:
 Page 1: 12/31/2022
@@ -197,31 +204,31 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
                 writer.write(f)
 
             # Convert to images
-            images = convert_from_path(temp_pdf_path, dpi=300, fmt="png")
+            images = convert_from_path(temp_pdf_path, dpi=400, fmt="png")
 
 
                 
 
             # # Enhance each image
-            # enhanced_images = []
-            # for img in images:
-            #     img = img.filter(ImageFilter.MedianFilter(size=3))
-            #     img = ImageEnhance.Sharpness(img).enhance(3.0)
-            #     img = ImageEnhance.Contrast(img).enhance(1.8)
-            #     img = ImageEnhance.Brightness(img).enhance(1.2)
-            #     enhanced_images.append(img.convert("RGB"))
+            enhanced_images = []
+            for img in images:
+                img = img.filter(ImageFilter.MedianFilter(size=3))
+                img = ImageEnhance.Sharpness(img).enhance(3.0)
+                img = ImageEnhance.Contrast(img).enhance(1.8)
+                img = ImageEnhance.Brightness(img).enhance(1.2)
+                enhanced_images.append(img.convert("RGB"))
 
             # # Save to enhanced PDF
-            # enhanced_images[0].save(
-            #     enhanced_pdf_path,
-            #     save_all=True,
-            #     append_images=images[1:]
-            # )
-            images[0].save(
+            enhanced_images[0].save(
                 enhanced_pdf_path,
                 save_all=True,
                 append_images=images[1:]
             )
+            # images[0].save(
+            #     enhanced_pdf_path,
+            #     save_all=True,
+            #     append_images=images[1:]
+            # )
 
 
         print(f"✅ Enhanced PDF saved: {enhanced_pdf_path}")

@@ -6,3 +6,6 @@ __pycache__
 uploaded_files
 subsequent/__pycache__
 output_folder
+myenv
+.conda
+__pycache__
