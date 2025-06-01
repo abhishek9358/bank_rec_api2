@@ -4,10 +4,10 @@ from subsequent._pdfextract import Subsequent_Extractor
 
 
 async def HandleSubSequent(fiscal_date, pdf_path):
-    Subsequent_Extractor(pdf_path)
-    md_path = "output/sub.md"
+    # Subsequent_Extractor(pdf_path)
+    # md_path = "output/sub.md"
 
-    response = await SubSequentResponse(md_path) 
+    response = await SubSequentResponse(pdf_path) 
     # response = []
 
     return response
