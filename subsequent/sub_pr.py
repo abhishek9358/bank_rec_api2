@@ -185,6 +185,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+import io
 
 import tempfile
 
@@ -194,20 +195,21 @@ GEMINI_API_KEY = os.getenv("subsequent_gemini_api")
 # Use your actual API key
 API_KEY = GEMINI_API_KEY
 
-def SubSequentResponse1(file_path, max_retries=3):
+def SubSequentResponse1(part_data: types.Part, max_retries=3):
     for attempt in range(max_retries):
         try:
             client = genai.Client(api_key=API_KEY)
-            files = [client.files.upload(file=file_path)]
+            # files = [client.files.upload(file=file_path)]
             model = "models/gemini-1.5-flash"
             contents = [
                 types.Content(
                     role="user",
                     parts=[
-                          types.Part.from_uri(
-                            file_uri=files[0].uri,  # type: ignore
-                            mime_type=files[0].mime_type,  # type: ignore
-                        ),
+                        #   types.Part.from_uri(
+                        #     file_uri=files[0].uri,  # type: ignore
+                        #     mime_type=files[0].mime_type,  # type: ignore
+                        # ),
+                        part_data,
                         types.Part.from_text(
                             text="""extract data from provided document
 Return in given json schema
@@ -327,9 +329,18 @@ Return in given json schema
                 return None
 
 
-async def process_page(executor, value):
+async def process_page(executor, img_obj):
     loop = asyncio.get_event_loop()
-    resp = await loop.run_in_executor(executor, SubSequentResponse1, value)
+    img_byte_arr = io.BytesIO()
+
+    img_obj.save(img_byte_arr, format="PNG", quality=100)
+    img_bytes_data = img_byte_arr.getvalue()
+
+    img_part = types.Part.from_bytes(
+        data= img_bytes_data,
+        mime_type= "image/png"
+    )
+    resp = await loop.run_in_executor(executor, SubSequentResponse1, img_part)
 
     if resp:
         try:
@@ -345,33 +356,32 @@ from pdf2image import convert_from_path
 
 async def SubSequentResponse(pdf_path):
     try:
-        print(pdf_path, "pdf path printing")
+        # print(pdf_path, "pdf path printing")
         start=  time.time()
         final_resp = []
-
-       
+    
         temp_folder = tempfile.mkdtemp()
         print(temp_folder, 'temp-folder')
         all_images =  os.listdir("subsequent/temp_images")
         
-        convert_from_path(pdf_path, output_folder=temp_folder, thread_count=os.cpu_count(),  output_file="outfile_", fmt="png", dpi=300)
+        images = convert_from_path(pdf_path, output_folder=temp_folder, thread_count=os.cpu_count(), dpi=300)
         
         print(
             'sta',  (time.time()) -start
         )
     
-        all_images =  os.listdir(temp_folder)
+        all_images = os.listdir(temp_folder)
         
-
+        # print(images)
 
         with ThreadPoolExecutor() as executor:
-            for i in range(0, len(all_images), 50): 
+            for i in range(0, len(images), 50): 
                 print("processing", i)
-                tasks = [process_page(executor, f"{temp_folder}/{img}") for img in all_images]
+                tasks = [process_page(executor, img) for img in images]
                 results = await asyncio.gather(*tasks)
 
                 for items in results:
-                    final_resp.extend(items)  
+                    final_resp.extend(items)
        
         print(f"✅ Extraction complete. Total transactions extracted: {len(final_resp)}")
         end_ti = time.time()
@@ -386,7 +396,7 @@ async def SubSequentResponse(pdf_path):
         return False
 
 
-# print(await SubSequentResponse("test.pdf"))
+# print(SubSequentResponse("test.pdf"))
 
 
 # To run from script directly
