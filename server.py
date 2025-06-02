@@ -163,7 +163,7 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
         
         final_resp =  await HandleSubSequent(fiscal_date,file_path1)
 
-        print(final_resp, 'hi')
+        # print(final_resp, 'hi')
         try:
             os.remove(f"./{file_path1}")
         except:
