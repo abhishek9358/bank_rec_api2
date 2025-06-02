@@ -150,7 +150,7 @@ async def upload_pdf(file: UploadFile = File(...),
 #         return JSONResponse(content={"error": str(e)}, status_code=500)   
     
 
-@app.post("/upload_sub/")
+@app.post("/upload_sub")
 async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFile):
 
     print(file)

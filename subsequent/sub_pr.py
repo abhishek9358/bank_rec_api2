@@ -345,47 +345,27 @@ from pdf2image import convert_from_path
 
 async def SubSequentResponse(pdf_path):
     try:
-        print(pdf_path, "pdf pah printing")
+        print(pdf_path, "pdf path printing")
         start=  time.time()
-        # with open(md_path, 'r') as f:
-        #     txt = f.read()
-        # pages = re.split(r'## Page \d+', txt)
-        # valid_pages = [p for i, p in enumerate(pages) if i != 0 and p.strip()]
         final_resp = []
 
-        # with ThreadPoolExecutor() as executor:
-        #     for i in range(0, len(valid_pages), 10):  # batch of 10 pages
-        #         chunk = valid_pages[i:i + 10]
-        #         print(f"Processing pages {i + 1} to {i + len(chunk)}...")
-        #         tasks = [process_page(executor, page) for page in chunk]
-        #         results = await asyncio.gather(*tasks)
-
-        #         for items in results:
-        #             final_resp.extend(items)  
-        # imag = convert_from_path(pdf_path, output_folder="subsequent/temp_images", output_file="outfile_", fmt="png", dpi=300)
+       
         temp_folder = tempfile.mkdtemp()
         print(temp_folder, 'temp-folder')
         all_images =  os.listdir("subsequent/temp_images")
         
-        # if len(all_images) < 1:
-        convert_from_path(pdf_path, output_folder=temp_folder, output_file="outfile_", fmt="png", dpi=300)
+        convert_from_path(pdf_path, output_folder=temp_folder, thread_count=os.cpu_count(),  output_file="outfile_", fmt="png", dpi=300)
         
-        # else:
-        #     for img in all_images: os.remove(f"subsequent/temp_images/{img}")
-        #     convert_from_path(pdf_path, output_folder="subsequent/temp_images", output_file="outfile_", fmt="png", dpi=300)
-
+        print(
+            'sta',  (time.time()) -start
+        )
+    
         all_images =  os.listdir(temp_folder)
-        # print("subsequent/temp_images/{img}")
-        # for img in sorted(all_images):
-        #     print(img)
-        #     rep = SubSequentResponse1(f"subsequent/temp_images/{img}")
-        #     print(rep)
-        #     break
+        
 
 
         with ThreadPoolExecutor() as executor:
             for i in range(0, len(all_images), 50): 
-                # chunk = valid_pages[i:i + 10]
                 print("processing", i)
                 tasks = [process_page(executor, f"{temp_folder}/{img}") for img in all_images]
                 results = await asyncio.gather(*tasks)
