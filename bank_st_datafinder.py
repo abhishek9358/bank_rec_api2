@@ -15,6 +15,10 @@ from pdf2image import convert_from_path
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 import cv2
 import numpy as np
+import tempfile
+
+from concurrent.futures import ThreadPoolExecutor
+
 
 load_dotenv()
 
@@ -44,10 +48,10 @@ def extract_header_text(pdf_path):
                     print("--Plumber Processeed --")
                 else:
                     print("--Pytesseract Processing --")
-                    image = page.to_image(resolution=300).original #300
+                    image = page.to_image(resolution=300).original #300 // 600
                     width, height = image.size
 
-                    crop_area = (0, 0, width, int(height * 0.5))
+                    crop_area = (0, 0, width, int(height * 0.5))  # Crop top 30% of the image
                     cropped_image = image.crop(crop_area)
 
                     gray = ImageOps.grayscale(cropped_image)
@@ -68,6 +72,9 @@ def extract_header_text(pdf_path):
 
 
 
+
+
+
 def split_into_chunks(header_texts, chunk_size=10):
     print("✂️ Splitting header text into chunks...")
     chunks = []
@@ -77,7 +84,11 @@ def split_into_chunks(header_texts, chunk_size=10):
         for page_num, header in chunk_pages:
             chunk_text += f"[Page {page_num}]\n{header}\n\n"
         chunks.append(chunk_text)
+        print(f"Chunk {len(chunks)} created with {len(chunk_pages)} pages.")
+        # print(chunks)
     return chunks
+
+
 
 def gemini_response(prompt):
     response = model.generate_content(prompt)
@@ -104,7 +115,7 @@ Instructions:
 - If the date is in the Month DD, YYYY format, convert it to MM/DD/YYYY.
     For example, convert June 30, 2023 to 06/30/2023.
 - if you find a date like "e.g: Previous period ending date: 12/31/2022",   so don't be extract this type of date, just extract the date which is in the header. 
-
+- Date ranges like JUNE 1, 2024 - JUNE 30, 2024 → ✅ Extract the last date (JUNE 30, 2024) and convert to 06/30/2024.
 Format your response like:
 Page 1: 12/31/2022
 Page 2: No period ending date found
@@ -154,12 +165,14 @@ def group_pages_by_detected_dates(page_dates, target_date_str):
             print(f"✅ Target period start detected at page {page_num}")
             capture = True
 
-        if detected not in ["No period ending date found", target_date_str] and capture:
-            print(f"🚫 Different period detected at page {page_num}, stopping capture")
-            break
+        
 
         if capture:
             grouped_pages.append(page_num)
+
+        if detected not in ["No period ending date found", target_date_str] and capture:
+            print(f"🚫 Different period detected at page {page_num}, stopping capture")
+            break    
 
     return grouped_pages
 
@@ -173,11 +186,83 @@ def group_pages_by_detected_dates(page_dates, target_date_str):
 
 
 
+
+
+
+
+
+
+
+# def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
+#     import os
+#     from pdf2image import convert_from_path
+#     from PIL import Image, ImageEnhance, ImageFilter
+#     import tempfile
+
+#     print("📄 Enhancing selected pages from PDF...")
+
+#     # Load original PDF and validate page numbers
+#     reader = PdfReader(input_pdf_path)
+#     total_pages = len(reader.pages)
+#     valid_page_numbers = [p for p in page_numbers if 1 <= p <= total_pages]
+
+#     if not valid_page_numbers:
+#         print("❌ No valid pages to enhance. Aborting.")
+#         return None
+
+#     os.makedirs(output_dir, exist_ok=True)
+#     input_filename = os.path.splitext(os.path.basename(input_pdf_path))[0]
+#     enhanced_pdf_path = os.path.join(output_dir, f"{input_filename}_enhanced.pdf")
+
+#     try:
+#         with tempfile.TemporaryDirectory() as temp_dir:
+#             # Extract only selected pages to temp PDF
+#             temp_pdf_path = os.path.join(temp_dir, "temp_selected.pdf")
+#             writer = PdfWriter()
+#             for p in valid_page_numbers:
+#                 writer.add_page(reader.pages[p - 1])
+#             with open(temp_pdf_path, "wb") as f:
+#                 writer.write(f)
+
+#             # Convert to images
+#             images = convert_from_path(temp_pdf_path, dpi=400, fmt="png")
+
+
+                
+
+#             # # Enhance each image
+#             enhanced_images = []
+#             for img in images:
+#                 img = img.filter(ImageFilter.MedianFilter(size=3))
+#                 img = ImageEnhance.Sharpness(img).enhance(3.0)
+#                 img = ImageEnhance.Contrast(img).enhance(1.8)
+#                 img = ImageEnhance.Brightness(img).enhance(1.2)
+#                 enhanced_images.append(img.convert("RGB"))
+
+#             # # Save to enhanced PDF
+#             enhanced_images[0].save(
+#                 enhanced_pdf_path,
+#                 save_all=True,
+#                 append_images=images[1:]
+#             )
+#             # images[0].save(
+#             #     enhanced_pdf_path,
+#             #     save_all=True,
+#             #     append_images=images[1:]
+#             # )
+
+
+#         print(f"✅ Enhanced PDF saved: {enhanced_pdf_path}")
+#         return enhanced_pdf_path
+
+#     except Exception as e:
+#         print("❌ Error during enhancement:", e)
+#         return None
+
+
+
 def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
-    import os
-    from pdf2image import convert_from_path
-    from PIL import Image, ImageEnhance, ImageFilter
-    import tempfile
+ 
 
     print("📄 Enhancing selected pages from PDF...")
 
@@ -189,6 +274,14 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
     if not valid_page_numbers:
         print("❌ No valid pages to enhance. Aborting.")
         return None
+
+    # 🔁 Add 2 extra pages after last selected page (if they exist)
+    last_page = max(valid_page_numbers)
+    extra_pages = [p for p in range(last_page + 1, last_page + 4) if p <= total_pages]
+    for ep in extra_pages:
+        if ep not in valid_page_numbers:
+            print(f"➕ Adding extra page {ep}")
+            valid_page_numbers.append(ep)
 
     os.makedirs(output_dir, exist_ok=True)
     input_filename = os.path.splitext(os.path.basename(input_pdf_path))[0]
@@ -205,32 +298,19 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
                 writer.write(f)
 
             # Convert to images
-            images = convert_from_path(temp_pdf_path, dpi=400, fmt="png")
+            images = convert_from_path(temp_pdf_path, dpi=450, fmt="png")
 
-
-                
-
-            # # Enhance each image
+            # Enhance each image
             enhanced_images = []
             for img in images:
-                img = img.filter(ImageFilter.MedianFilter(size=3))
-                img = ImageEnhance.Sharpness(img).enhance(3.0)
-                img = ImageEnhance.Contrast(img).enhance(1.8)
-                img = ImageEnhance.Brightness(img).enhance(1.2)
                 enhanced_images.append(img.convert("RGB"))
 
-            # # Save to enhanced PDF
+            # Save to enhanced PDF
             enhanced_images[0].save(
                 enhanced_pdf_path,
                 save_all=True,
                 append_images=images[1:]
             )
-            # images[0].save(
-            #     enhanced_pdf_path,
-            #     save_all=True,
-            #     append_images=images[1:]
-            # )
-
 
         print(f"✅ Enhanced PDF saved: {enhanced_pdf_path}")
         return enhanced_pdf_path
@@ -238,6 +318,7 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
     except Exception as e:
         print("❌ Error during enhancement:", e)
         return None
+
 
 
 
