@@ -68,7 +68,7 @@ def extract_text_from_pdf(pdf_path):
             if not extracted_text:
                 print("yes it was in loop")
                 # imag = convert_from_path(pdf_path, output_folder="temp_images", output_file="outfile_", fmt="png", dpi=300)
-                imag = convert_from_path(pdf_path, output_folder="subsequent/temp_images", output_file="outfile_", fmt="png", dpi=300)
+                imag = convert_from_path(pdf_path, output_folder="subsequent/temp_images", output_file="outfile_", fmt="jpeg", dpi=500)
                 print("saved images")
 
                 # list_dir = os.listdir('temp_images')

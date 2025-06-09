@@ -1,0 +1,439 @@
+{
+  "statementDate": "01/31/2024",
+  "trx": [
+    {
+      "date": "2024-01-23",
+      "check": "6553",
+      "description": "Alexandra Francis Nilo1390 Mill St Apt 202Eugene, OR 97401MEMOX-17-13 Loan Proceeds",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-31",
+      "check": "6554",
+      "description": "Paris Gregory Nunes9039 SE \u0160tark StPortland, OR 97216MEMO2310 Loan Proceeds",
+      "label": null,
+      "amount": 2281.51
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6556",
+      "description": "Towana Marie Peltier109 Blossom LaneOlympia, WA 98541MEMOX-3318 Loan Proceeds",
+      "label": null,
+      "amount": 1501.11
+    },
+    {
+      "date": "2024-01-18",
+      "check": "6559",
+      "description": "Valarie Faye Smith65131 Old Oregon TrailMeacham, OR 97859MEMOX-1017 Loan Proceeds",
+      "label": null,
+      "amount": 9425.0
+    },
+    {
+      "date": "2024-01-17",
+      "check": "6555",
+      "description": "Chelsey Rae Parker206 SW 7th StreetPendleton, OR 97801MEMOX-2741 Loan Proceeds",
+      "label": null,
+      "amount": 2315.73
+    },
+    {
+      "date": "2024-01-23",
+      "check": "6557",
+      "description": "Daniel Christopher Scott4242 NE Halsey Street Apt 509Portland, OR 97213MEMOX-2739 Loan Proceeds",
+      "label": null,
+      "amount": 712.88
+    },
+    {
+      "date": "2024-01-19",
+      "check": "6558",
+      "description": "Margaret Ann Shippentower824 Elderberry LoopPendleton, OR 97801MEMOX-053 Loan Proceeds",
+      "label": null,
+      "amount": 675.62
+    },
+    {
+      "date": "2024-01-18",
+      "check": "6560",
+      "description": "Tom Lewis Stewart501 3rd StreetLa Grande, OR 97850MEMO2310 Loan Proceeds",
+      "label": null,
+      "amount": 2311.04
+    },
+    {
+      "date": "2024-01-19",
+      "check": "6561",
+      "description": "Leland James Vijarro441 Old Goldendale RoadToppenish, WA 98948MEMOX2505 Loan Proceeds",
+      "label": null,
+      "amount": 726.57
+    },
+    {
+      "date": "2024-01-24",
+      "check": "6562",
+      "description": "Ariane Danee Wildbill4610 NE 42nd Ave Apt 310Portland, OR 97218MEMOX2349. Loan Proceeds",
+      "label": null,
+      "amount": 3046.45
+    },
+    {
+      "date": "2024-01-25",
+      "check": "6563",
+      "description": "Clay C. Christensen223 SE 19th StreetPendleton, OR 97801MEMOX-1344 Loan Proceeds",
+      "label": null,
+      "amount": 1481.95
+    },
+    {
+      "date": "2024-01-23",
+      "check": "6564",
+      "description": "Justin Matthew Yeager709 SE Date AveCollege Place, WA 99324MEMO3380 Loan Proceeds.",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6565",
+      "description": "CTUIR HousingLoan Proceed payment forLoan proceed deduct(s)",
+      "label": null,
+      "amount": 54.75
+    },
+    {
+      "date": "2024-01-22",
+      "check": "6568",
+      "description": "Frances Anita Gomez-Chalakee821 Elderberry LoopPendleton, OR 97801MEMOX-2488 Loan Proceeds",
+      "label": null,
+      "amount": 737.38
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6566",
+      "description": "Delbert Edwin Ferraris49 Umatilla LoopPendleton, OR 97801MEMOX-1621 Loan Proceeds.",
+      "label": null,
+      "amount": 2334.48
+    },
+    {
+      "date": "2024-01-23",
+      "check": "6567",
+      "description": "Jackson Josiah Ganuelas-Red Elk27 Willow DrivePendleton, OR 97801MEMOX-3328 ATP",
+      "label": null,
+      "amount": 2310.31
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6569",
+      "description": "Phillip Charles Greyfox50 Willow DrivePendleton, OR 97801MEMOX 3328 Loan Proceeds",
+      "label": null,
+      "amount": 360.25
+    },
+    {
+      "date": "2024-01-22",
+      "check": "6570",
+      "description": "Veva Selema Jim42 Willow DrivePendleton, OR 97801MEMO1088 Loan Proceeds",
+      "label": null,
+      "amount": 5925.0
+    },
+    {
+      "date": "2024-01-19",
+      "check": "6571",
+      "description": "Ali-Bear-Bella Joy Kipp725 SW 2nd StreetPendleton, OR 97801MEMOX-2886 Loan Proceeds",
+      "label": null,
+      "amount": 925.0
+    },
+    {
+      "date": "2024-01-31",
+      "check": "6572",
+      "description": "Terri Lee Amos410 SW Hailey AvePendleton, OR 97801MEMOX-1203 Loan Proceeds",
+      "label": null,
+      "amount": 1492.3
+    },
+    {
+      "date": "2024-01-25",
+      "check": "6576",
+      "description": "Mason Lee Foster206 Birch LoopPendleton, OR 97801MEMOX-1836 1 oan Proceeds",
+      "label": null,
+      "amount": 1082.64
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6578",
+      "description": "Raheem'a Tighee George441 Old Goldendale RoadToppenish, WA 98948",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-25",
+      "check": "6577",
+      "description": "Lois Ann Frank40 Willow DrivePendleton, OR 97801MEMOX-490 Loan Proceeds",
+      "label": null,
+      "amount": 1900.29
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6579",
+      "description": "Cecil Dean Guardipee46523 Mission Road #13Pendleton, OR 97801MEMOX2627 Loan Proceeds",
+      "label": null,
+      "amount": 1751.36
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6580",
+      "description": "Theadore Larry Hines4304 Mountainview AveYakima, WA 98901509-901-4922MEMOX-1297 Loan Proceeds.",
+      "label": null,
+      "amount": 1475.88
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6582",
+      "description": "Lonna Dee Lewis3411 NE Riverside Ave Unit 3Pendleton, OR 97801MEMOX-955 I can.Proceeds",
+      "label": null,
+      "amount": 1925.0
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6588",
+      "description": "Alysa Ann Minthorn141 SE 143rd Ave Apt 225Portland, OR 97233MEMOX-2053 Loan Proceeds",
+      "label": null,
+      "amount": 3021.9
+    },
+    {
+      "date": "2024-01-24",
+      "check": "6589",
+      "description": "Yvonne Karen Moffett504 Hawthorn LoopPendleton, OR 97801MEMOX-2069 Loan Proceeds",
+      "label": null,
+      "amount": 524.84
+    },
+    {
+      "date": "2024-01-31",
+      "check": "6591",
+      "description": "Donald Ramsey Scott45526 Best RoadPendleton, OR 97801MEMOX-2367 Loan Proceeds",
+      "label": null,
+      "amount": 1483.08
+    },
+    {
+      "date": "2024-01-24",
+      "check": "6590",
+      "description": "David Patrick Pizer38 Willow DrivePendleton, OR 97801MEMOX-457 Loan Proceeds",
+      "label": null,
+      "amount": 1929.44
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6594",
+      "description": "Colton Hunter Star521 SW 14th StreetPendleton, OR 97801MEMOX-2815 Loan Proceeds",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-24",
+      "check": "6592",
+      "description": "Castina Fern Shippentower SID#1516814573542 Parr LanePendleton, OR 97801MEMO1X 1823 Loan Proceeds",
+      "label": null,
+      "amount": 2271.41
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6593",
+      "description": "Karen Carson Sonsy521 SW 14th StPendleton, OR 97801MEMOX-2202 Loan Proceeds",
+      "label": null,
+      "amount": 3190.1
+    },
+    {
+      "date": "2024-01-24",
+      "check": "6595",
+      "description": "Victoria Hope Star2918 NE Riverside Ave #15Pendleton, OR 97801MEMOX-2779 loan Proceeds",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6596",
+      "description": "J'Shon Camille Thompson15 Alder DrivePendleton, OR 97801MEMO1947 Loan Proceeds",
+      "label": null,
+      "amount": 2240.54
+    },
+    {
+      "date": "2024-01-25",
+      "check": "6597",
+      "description": "Araileya Joan Toledo1041 College StreetMilton Freewater, OR 97862MEMOX-2950 Loan Proceeds.",
+      "label": null,
+      "amount": 719.59
+    },
+    {
+      "date": "2024-01-25",
+      "check": "6598",
+      "description": "Cole Red Bear Treloar49954 N Cayuse Road A2Pendleton, OR 97801MEMOX-1885 Loan Proceeds",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6601",
+      "description": "Louisa Marie Allman422 SW 8thPendleton, OR 97801MEMOX-1024 Loan Proceeds",
+      "label": null,
+      "amount": 11925.0
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6600",
+      "description": "David Lewis Williams4103 East Grace AveSpokane, WA 99217MEMO6891 oan Proceeds",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6602",
+      "description": "Eloise Ann Baptiste50 Umatilla LoopPendleton, OR 97801MEMOX-458",
+      "label": null,
+      "amount": 719.94
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6603",
+      "description": "Suzanne Mary Barnett44 Umatilla LoopPendleton, OR 97801MEMOX-4681 can Proceeds",
+      "label": null,
+      "amount": 875.92
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6604",
+      "description": "Billy Ray Bronson43605 Elder AvePendleton, OR 97801MEMOX-1306 Loan. Proceeds",
+      "label": null,
+      "amount": 5006.4
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6605",
+      "description": "Steven Matthew Celestine110 West C StreetWapato, WA 98951MEMOX2243",
+      "label": null,
+      "amount": 1517.57
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6611",
+      "description": "Michalle Henrietta Grayfox24 Willow DrivePendleton, OR 97801MEMOX-1687 Loan Proceeds",
+      "label": null,
+      "amount": 633.61
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6612",
+      "description": "Althea Loretta Marie Hicks46613 Popcorn LanePilot Rock, OR 97868MEMOX-2718 Joan Proceeds.",
+      "label": null,
+      "amount": 825.0
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6614",
+      "description": "Monece Sicily Moses-Conner73407 Hwy 331Pendleton, OR 97801MEMOX-1856 Loan Proceeds",
+      "label": null,
+      "amount": 2346.3
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6606",
+      "description": "David Alan Close9 Cottonwood LanePendleton, OR 97801MEMOX-13111 oan Proceeds",
+      "label": null,
+      "amount": 1428.52
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6613",
+      "description": "Ethel Mae Hogge624 SW 2nd StreetPendleton, OR 97801MEMOX-4032.Loan Proceeds",
+      "label": null,
+      "amount": 7925.0
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6615",
+      "description": "Monece Sicily Moses-Conner73407 Hwy 331Pendleton, OR 97801MEMOX-137 Loan Proceeds.",
+      "label": null,
+      "amount": 2639.85
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6616",
+      "description": "Elwood H. Patawa47184 Kirkpatrick RdPendleton, OR 97801MEMOX-344 Loan Proceeds.",
+      "label": null,
+      "amount": 1503.4
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6617",
+      "description": "Kathleta Frances Rodriguez1440 SW 45thPendleton, OR 97801MEMOX-1697 Loan Proceeds",
+      "label": null,
+      "amount": 7227.54
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6619",
+      "description": "Courtney Rose Smartlowit320 Fort RoadWapato, WA 98948MEMOX2986 Loan Proceeds",
+      "label": null,
+      "amount": 1517.63
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6620",
+      "description": "Ginella Raquelle Thompson-Red Elk2713 Westgate Apt 205Pendleton, OR 97801MEMOX-1264 Loan Proceeds.",
+      "label": null,
+      "amount": 2800.0
+    },
+    {
+      "date": "2024-01-29",
+      "check": "6622",
+      "description": "Alvin Bruce Van Pelt Sr.46074 Best RoadPendeton, OR 97801MEMOX-472",
+      "label": null,
+      "amount": 9925.0
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6625",
+      "description": "Adrienne Elise Wolf303 NE Anvidon StreetPendleton, OR 97801MEMOX-1364 1 oan Proceeds",
+      "label": null,
+      "amount": 1076.11
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6623",
+      "description": "Bruce Anthony Wheeler25115 Grouse RoadLapwai, ID 83540MEMOX-2618 Loan Proceeds",
+      "label": null,
+      "amount": 3925.0
+    },
+    {
+      "date": "2024-01-26",
+      "check": "6624",
+      "description": "Katherine Louise Wildbill15 SE Emigrant Ave #205Pendleton, OR 97801MEMOX-2636 Loan Proceeds",
+      "label": null,
+      "amount": 2338.91
+    },
+    {
+      "date": "2024-01-30",
+      "check": "6626",
+      "description": "Mary Jean Yu410 Dogwood LoopPendleton, OR 97801MEMO1464 Loan Proceeds",
+      "label": null,
+      "amount": 639.46
+    },
+    {
+      "date": "2024-01-31",
+      "check": "6628",
+      "description": "CTUIR FSA Benefit Account46411 Timine WayPendleton, OR 97801MEMONCFS FSA Deductions",
+      "label": null,
+      "amount": 320.0
+    },
+    {
+      "date": "2024-01-31",
+      "check": "6631",
+      "description": "DDRC Marketing LLCPO Box 1011La Grande, OR 97850",
+      "label": null,
+      "amount": 100.0
+    },
+    {
+      "date": "2024-01-31",
+      "check": "6633",
+      "description": "Wenaha Group, Inc.Suite 630505 S 336th StreetFederal Way, WA 98003",
+      "label": null,
+      "amount": 5527.5
+    },
+    {
+      "date": "2024-01-09",
+      "check": "88041",
+      "description": "THE OWEESTA CORPORATIONMemo: 3132account holder has preapproved this check",
+      "label": null,
+      "amount": 307.5
+    }
+  ]
+}
