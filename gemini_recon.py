@@ -24,158 +24,136 @@ def upload_pdf_to_gemini(pdf_path):
 # STEP 4: Ask Gemini using schema prompt
 def query_with_file(file):
     prompt = """
-You are an expert financial data extraction AI. Your primary goal is to meticulously extract specific financial transactions from the provided document text and structure them perfectly according to the JSON schema below. Accuracy and completeness are paramount.
-
-**Your Process:**
-
-1.  **Identify Target Sections:** Carefully scan the entire document for headers that EXACTLY match or are VERY CLOSE VARIATIONS of:
-    *   For `uncleared_checks`: "uncleared checks and payments AS OF mm/dd/yyyy" or "Outstanding Checks/Vouchers".
-    *   For `uncleared_deposits`: "uncleared deposit and other credits as of mm/dd/yyyy" or "Outstanding Other Cash Items".
-    *   For `suspense_items`: "Outstanding Suspense Items".
-
-2.  **Extract ALL Line Items Within Each Section:**
-    *   Once a target section is identified, you MUST extract **every single line item** listed under that section's header.
-    *   Continue extracting items for that section until you encounter:
-        *   A "Total" line that clearly corresponds to *that specific list of items*.
-        *   The beginning of a new, different target section header.
-        *   A clear and definitive end to the list of transactions for that section.
-    *   **Do not stop prematurely.** Even if an item seems slightly different (e.g., "Receive Payment" vs. "Deposit"), if it's listed as a line item within that section before its subtotal, it must be extracted.
-    *   If a target section header is not found, the corresponding array in the JSON should be empty (`[]`).
-
-3.  **Populate Item Details Correctly:** For each extracted line item:
-    *   `date`: Extract the transaction date from the line item itself and format it as an ISO date (YYYY-MM-DD).
-    *   `description`: Create a comprehensive transaction description. This should include:
-        *   The type of transaction if specified on the line (e.g., "Check", "Deposit", "Journal", "Receive Payment").
-        *   Any reference number (e.g., check number, REF NO.).
-        *   The payee, payor, or memo details.
-        *   Combine these elements into a clear, descriptive string.
-       *   `amount`: Extract the transaction amount as a string. Crucially, **include negative signs** for payments/checks (e.g., "-167.75") and positive (or no sign initially, but ensure it's a string representation of a positive number) for deposits/credits.
-
-
-4. - Don't be take a uncleared_checks after, uncleared_deposits after, so don.t take a "after" section entries only take a "as of" section entries.
-
-5.  **Calculate Totals:**
-    *   `total_0`: This is the total of all 'amount' values from the `uncleared_checks` array.
-    *   `tota_1`: This is the total of all 'amount' values from the `uncleared_deposits` array.
-    *   `total_2`: This is the total of all 'amount' values from the `suspense_items` array.
-    *   If a document **explicitly states a "Total" amount for one of these specific lists**, use that stated total as a string.
-    *   If an array is empty, or no explicit total is given for that list and items exist, you should calculate the sum. If the array is empty and no total is given, the total should be "0".
-    *   Ensure all total fields are strings.
-
-6.  **Output Format:**
-    *   Your final output MUST be a single, valid JSON object that strictly adheres to the provided schema.
-    *   Do not include any conversational text, explanations, apologies, or markdown formatting (like ```json) before or after the JSON object.
-
-7.  **Extract ALL Line Items Within Each Section:**
-    *   When you identify a target section header (e.g., "Uncleared checks and payments as of 12/31/2022"):
-        *   **Scan line by line beneath this header.**
-        *   **For each line that appears to be a transaction item:** Extract its details (date, description, amount).
-        *   **Continue this scanning process** until you clearly reach the "Total" for this specific list of uncleared checks/payments, or until a new major section header (like "Uncleared deposits") begins.
-        *   Do not assume a section ends after finding just one item if more line items follow before a clear section terminator.
-    *   For instance, if under "in the targetted section" there's an item dated 05/01/2022 and THEN another item dated 08/31/2022 before the 'Total' line for that section, BOTH items must be extracted individually.
-
-    
-8.  **CRITICAL INSTRUCTION FOR SCHEMA ADHERENCE:**
-        Your final JSON output MUST strictly follow the schema definitions.
-        *   For `uncleared_checks`, ONLY include items explicitly found under headers like "uncleared checks and payments AS OF mm/dd/yyyy" or "Outstanding Checks/Vouchers".
-        *   For `uncleared_deposits`, ONLY include items explicitly found under headers like "uncleared deposit and other credits as of mm/dd/yyyy" or "Outstanding Other Cash Items".
-        *   For `suspense_items`, ONLY include items explicitly found under "Outstanding Suspense Items".
-
-  **EXCLUDE ALL OTHER ITEMS:** If items are listed under different headers, such as "Deposits and other credits CLEARED" or "Checks and payments CLEARED", they DO NOT BELONG in the `uncleared_checks`, `uncleared_deposits`, or `suspense_items` arrays. In such cases, these arrays in your output JSON should be empty (`[]`) unless a section with the exact "uncleared" or "outstanding" phrasing is also present.
-
-9. **Extract EVERY SINGLE Line Item Within Each Identified Section:**
-    *   Once a target section is identified (e.g., "Outstanding Checks/Vouchers"), your primary task is to list **EVERY INDIVIDUAL TRANSACTION LINE ITEM** found under that header.
-    *   **DO NOT SUMMARIZE OR TRUNCATE THE LIST OF ITEMS.** Even if the list is long, each distinct line representing a check, voucher, deposit, or cash item must be extracted as a separate object in the relevant JSON array.
-    *   Scan line by line directly beneath the identified section header. For each line that represents a distinct transaction:
-        *   `date`: Extract the transaction date (Document Date) and format it as YYYY-MM-DD.
-        *   `description`: Create a comprehensive description. Include the Document Number (if present), the full Document Description from the document, and the Payee. Example: "Document 45066 System Generated Check/Voucher Grays Harbor PUD".
-        *   `amount`: Extract the Document Amount as a string. **Crucially, if the amount is shown in parentheses like (54.40), it represents a negative value and MUST be extracted as a negative string, e.g., "-54.40". Otherwise, extract as a positive string.**
-    *   Continue extracting individual line items until you reach the explicitly stated "Total" line for *that specific section* (e.g., "Outstanding Checks/Vouchers 34,475.14") or a new major section header.
-    
-10.  **Identify Target Sections:** Carefully scan the **entire document text** for headers that EXACTLY match or are VERY CLOSE VARIATIONS of:
-    *   For `uncleared_checks`: "Uncleared checks and payments as of 12/31/2023" (or similar date).
-    *   For `uncleared_deposits`: "Uncleared deposits and other credits as of 12/31/2023" (or similar date).
-    *   For `suspense_items`: "Outstanding Suspense Items" (if present).
-
-11.  **Extract EVERY SINGLE Line Item Within Each Identified Section (Across Pages):**
-    *   Once a target section is identified (e.g., "Uncleared checks and payments as of 12/31/2023"), your primary task is to list **EVERY INDIVIDUAL TRANSACTION LINE ITEM** found under that header.
-    *   **IMPORTANT FOR MULTI-PAGE DOCUMENTS:** If a list of items for a section (e.g., "Uncleared checks and payments") starts on one page and appears to continue onto the next page (e.g., more line items before a "Total" or a new major section header), you MUST continue to scan and extract these items from the subsequent page(s) and include them in the same array. **Do not prematurely conclude a section at a page break if the content logically continues.**
-    *   For example, if "Uncleared checks and payments as of 12/31/2023" lists some items, then there's a page break, and then more items like "Bill Payment 4067 Department of Justice" and "Expense Hawaii Employers Mutual Ins." appear before the "Total" for that section, ALL of these items must be included in the `uncleared_checks` array.
-    *   Scan line by line directly beneath the identified section header. For each line that represents a distinct transaction:
-        *   `date`: Extract the transaction date and format it as YYYY-MM-DD.
-        *   `description`: Create a comprehensive description including TYPE, REF NO. (if present), and PAYEE.
-        *   `amount`: Extract the transaction amount as a string, ensuring negative signs are included where appropriate.
-    *   Continue extracting individual line items until you reach the explicitly stated "Total" line for *that specific section* (e.g., "Total -2,086.60" for uncleared checks) or a new major section header.
-
-
-10. Don't be take a "Checks and payments cleared"  , "Deposits and other credits cleared", so don.t take a "after" or "Uncleared checks and payments after "  section entries only take a "as of" section entries. if only these section are only avalaible in the document so pass the "0". "But ensure that not provide these sections entry in any condition".
-    **JSON Schema:**
+1. Role & Primary Objective
+You are an AI expert specializing in financial data extraction. Your sole purpose is to meticulously scan the provided document text, identify specific lists of financial transactions, and extract every line item with perfect accuracy. You will then structure this data into a single, raw JSON object that strictly adheres to the provided schema.
+2. Core Extraction Logic: A Step-by-Step Process
+Step 1: Identify Target Sections
+Your first task is to locate the specific sections containing the data you need. Scan the entire document for headers that are exact matches or extremely close variations of the following. The date mm/dd/yyyy can vary.
+For uncleared_checks:
+"Uncleared checks and payments as of mm/dd/yyyy"
+"Outstanding Checks/Vouchers"
+"Uncleared checks and payments as of [Date]"
+For uncleared_deposits:
+"Uncleared deposits and other credits as of mm/dd/yyyy"
+"Outstanding Other Cash Items"
+"Uncleared deposits and other credits as of [Date]"
+For suspense_items:
+"Outstanding Suspense Items"
+Step 2: Meticulous Line Item Extraction
+Once you identify a valid target section, you must extract EVERY SINGLE transaction line item listed beneath that header.
+Extraction Scope: Continue extracting items line by line until you encounter one of the following "stop" signals:
+A "Total" line that clearly summarizes the list you are currently extracting.
+The header of a new, different target section (e.g., you are extracting checks and you see the "Uncleared deposits" header).
+A clear and definitive end to the list of transactions for that section.
+Multi-Page Lists: If a list of items for a section starts on one page and continues onto the next, you MUST continue extracting from the subsequent pages until you hit a "stop" signal. Do not end a section prematurely at a page break.
+Step 3: Accurate Field Population
+For each individual line item you extract, populate its details into a JSON object as follows:
+date: Extract the transaction date from the line. Format it as an ISO date string: YYYY-MM-DD.
+description: Create a comprehensive string. Combine the transaction TYPE (e.g., "Check", "Bill Pmt-Check", "Deposit"), the REF NO. (if present), and the PAYEE or NAME/MEMO field.
+amount: Extract the transaction amount as a string. This is critical:
+MUST include the negative sign for checks, payments, or debits (e.g., "-167.75").
+Amounts shown in parentheses, like (167.75), represent negative values and MUST be extracted as a negative string (e.g., "-167.75").
+Deposits and credits should be positive (e.g., "100.00").
+ref no: Extract the reference number (e.g., Check Number, REF NO., Num).
+payee: Extract the payee, name, or memo associated with the transaction.
+3. Critical Rules & Exclusions (What NOT to Extract)
+EXCLUDE "CLEARED" TRANSACTIONS: You MUST ignore any sections with headers like "Cleared Transactions," "Checks and payments cleared," or "Deposits and other credits cleared." Items from these sections DO NOT belong in the output.
+EXCLUDE "AFTER" DATE TRANSACTIONS: You MUST ignore any sections with headers like "Uncleared transactions after mm/dd/yyyy". Only extract from sections explicitly labeled "as of mm/dd/yyyy" or "Outstanding...".
+HANDLE MISSING SECTIONS: If a document does not contain a specific target section (e.g., there are no "Uncleared deposits"), the corresponding array in the JSON output must be empty ([]).
+4. Finalization & Output Formatting
+Step 4: Calculate Totals
+After extracting all items, calculate the totals.
+total_0: The total for uncleared_checks.
+tota_1: The total for uncleared_deposits.
+total_2: The total for suspense_items.
+Prioritize Explicit Totals: If the document provides an explicit "Total" amount for a specific list you extracted, use that value.
+Calculate if Necessary: If no explicit total is given for a list with items, you must calculate the sum of the amount fields.
+Formatting: All total values must be strings. If an array is empty, its total must be "0".
+Step 5: Strict JSON Output
+Your final output MUST be a single, raw, and perfectly valid JSON object conforming to the schema below.
+DO NOT include any conversational text, explanations, apologies, or markdown formatting (like ```json).
+The entire response should be only the JSON object itself.
+5. JSON Schema (Reference)
+Generated json
 {
   "additionalProperties": false,
   "properties": {
     "uncleared_checks": {
-      "description": "Specifically \"uncleared checks and payments AS OF mm/dd/yyyy\" or \"Outstanding Checks/Vouchers\" only if keys don't match assume [], if not specified, assume []",
+      "description": "Specifically \"uncleared checks and payments AS OF mm/dd/yyyy\" or \"Outstanding Checks/Vouchers\" only. If not specified, assume [].",
       "items": {
         "additionalProperties": false,
         "properties": {
-          "date": { "description": "ISO formatted date", "type": "string" },
-          "description": { "description": "transaction description", "type": "string" },
-          "amount": { "description": "transaction amount", "type": "string" }bu
+          "date": {
+            "description": "ISO formatted date (YYYY-MM-DD).",
+            "type": "string"
+          },
+          "description": {
+            "description": "Comprehensive transaction description (Type, Ref No, Payee/Name).",
+            "type": "string"
+          },
+          "amount": {
+            "description": "Transaction amount as a string, with negative sign if applicable.",
+            "type": "string"
+          },
+          "ref no": {
+            "description": "Reference number, REF NO., or document number.",
+            "type": "string"
+          },
+          "payee": {
+            "description": "Payee, Name, or Memo.",
+            "type": "string"
+          }
         },
-        "required": ["date", "description", "amount"],
+        "required": ["date", "description", "amount", "ref no", "payee"],
         "type": "object"
       },
       "type": "array"
     },
     "uncleared_deposits": {
-      "description": "Specifically \"uncleared deposit and \n other credits as of mm/dd/yyyy\" or \"Outstanding Other Cash Items\" only if not specified, assume []",
+      "description": "Specifically \"uncleared deposit and other credits as of mm/dd/yyyy\" or \"Outstanding Other Cash Items\" only. If not specified, assume [].",
       "items": {
         "additionalProperties": false,
         "properties": {
-          "date": { "description": "ISO formatted date", "type": "string" },
-          "description": { "description": "transaction description", "type": "string" },
-          "amount": { "description": "transaction amount", "type": "string" }
+          "date": { "type": "string" },
+          "description": { "type": "string" },
+          "amount": { "type": "string" },
+          "ref no": { "type": "string" },
+          "payee": { "type": "string" }
         },
-        "required": ["date", "description", "amount"],
+        "required": ["date", "description", "amount", "ref no", "payee"],
         "type": "object"
       },
       "type": "array"
     },
     "suspense_items": {
-      "description": "Specifically \"Outstanding Suspense Items\" only if not specified, assume []",
+      "description": "Specifically \"Outstanding Suspense Items\" only. If not specified, assume [].",
       "items": {
         "additionalProperties": false,
         "properties": {
-          "date": { "description": "ISO formatted date", "type": "string" },
-          "description": { "description": "transaction description", "type": "string" },
-          "amount": { "description": "transaction amount", "type": "string" }
+          "date": { "type": "string" },
+          "description": { "type": "string" },
+          "amount": { "type": "string" },
+          "Item Number": { "type": "string" }
         },
-        "required": ["date", "description", "amount"],
+        "required": ["date", "description", "amount", "Item Number"],
         "type": "object"
       },
       "type": "array"
     },
     "total_0": {
-      "anyOf": [{ "type": "string" }, { "type": "null" }],
-      "description": "total of all items amount value from \"uncleared_checks\" if not specified assume 0"
+      "description": "Total of 'uncleared_checks' amounts, as a string. '0' if empty.",
+      "type": "string"
     },
     "tota_1": {
-      "description": "total of all items amount value from \"uncleared_deposits array\" if not specified assume 0",
+      "description": "Total of 'uncleared_deposits' amounts, as a string. '0' if empty.",
       "type": "string"
     },
     "total_2": {
-      "description": "total of all items amount value from \"suspense_items array\" if not specified assume 0",
+      "description": "Total of 'suspense_items' amounts, as a string. '0' if empty.",
       "type": "string"
     }
   },
-  "required": [
-    "uncleared_checks",
-    "uncleared_deposits",
-    "suspense_items",
-    "total_0",
-    "tota_1",
-    "total_2"
-  ],
+  "required": ["uncleared_checks", "uncleared_deposits", "suspense_items", "total_0", "tota_1", "total_2"],
   "type": "object"
 }
 
