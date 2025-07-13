@@ -25,7 +25,10 @@ def HandleJsonForResp(json_path):
                     child_items.append({
                         "date": child_values['date'],
                         "type": child_values['description'],
-                        "amount": child_values['amount']
+                        "amount": child_values['amount'],
+                        "refrence number": child_values['ref no'],
+                        "payee": child_values['payee']
+
                     })
                 final_resp["Uncleared Checks and Payments"] =  child_items
              
@@ -36,7 +39,9 @@ def HandleJsonForResp(json_path):
                         child_items.append({
                             "date": child_values['date'],
                             "type": child_values['description'],
-                            "amount": child_values['amount']
+                            "amount": child_values['amount'],
+                            "refrence number": child_values['ref no'],
+                            "payee": child_values['payee']
                         })
                     final_resp["Uncleared Deposits and Credits"] =  child_items
 
@@ -51,7 +56,9 @@ def HandleJsonForResp(json_path):
                         child_items.append({
                             "date": child_values['date'],
                             "type": child_values['description'],
-                            "amount": child_values['amount']
+                            "amount": child_values['amount'],
+                            "item number": child_values.get('ref no') or child_values.get('Item Number')
+
                             
                         })
                     final_resp["Outstanding Suspense Items"] =  child_items        
