@@ -141,15 +141,15 @@ Generated json
       "type": "array"
     },
     "total_0": {
-      "description": "Total of 'uncleared_checks' amounts, as a string. '0' if empty.",
-      "type": "string"
+      "anyOf": [{ "type": "string" }, { "type": "null" }],
+      "description": "total of all items amount value from \"uncleared_checks\" if not specified assume 0"
     },
-    "tota_1": {
-      "description": "Total of 'uncleared_deposits' amounts, as a string. '0' if empty.",
+     "tota_1": {
+      "description": "total of all items amount value from \"uncleared_deposits array\" if not specified assume 0",
       "type": "string"
     },
     "total_2": {
-      "description": "Total of 'suspense_items' amounts, as a string. '0' if empty.",
+      "description": "total of all items amount value from \"suspense_items array\" if not specified assume 0",
       "type": "string"
     }
   },
