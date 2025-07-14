@@ -59,7 +59,8 @@ payee: Extract the payee, name, or memo associated with the transaction.
 3. Critical Rules & Exclusions (What NOT to Extract)
 EXCLUDE "CLEARED" TRANSACTIONS: You MUST ignore any sections with headers like "Cleared Transactions", "Checks and payments cleared" or "Deposits and other credits cleared [()]" Items from these sections DO NOT belong in the output.
 EXCLUDE "AFTER" DATE TRANSACTIONS: You MUST ignore any sections with headers like "Uncleared transactions after mm/dd/yyyy". Only extract from sections explicitly labeled "as of mm/dd/yyyy" or "Outstanding...".
-HANDLE MISSING SECTIONS: If a document does not contain a specific target section (e.g., there are no "Uncleared deposits"), the corresponding array in the JSON output must be empty ([]).
+HANDLE MISSING SECTIONS: If a document does not contain a specific target section (e.g., there are no "Uncleared deposits"), the corresponding array in the JSON output must be empty ([]),
+Exclude "Deposits and other credits cleared".
 4. Finalization & Output Formatting
 Step 4: Calculate Totals
 After extracting all items, calculate the totals.
