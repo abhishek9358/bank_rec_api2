@@ -153,8 +153,8 @@ def save_filtered_pdf(input_pdf_path, output_dir, page_numbers):
     from PIL import Image, ImageEnhance, ImageFilter
     import tempfile
 
+    page_numbers.append(page_numbers[len(page_numbers) - 1] + 1)
     print("📄 Enhancing selected pages from PDF...")
-
     # Load original PDF and validate page numbers
     reader = PdfReader(input_pdf_path)
     total_pages = len(reader.pages)
