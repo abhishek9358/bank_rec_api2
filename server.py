@@ -51,9 +51,9 @@ async def upload_pdf(file: UploadFile = File(...),
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
 
-        output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
+        # output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
-        gemini_upload = upload_pdf_to_gemini(output_path)
+        gemini_upload = upload_pdf_to_gemini(file_location)
         print('file uploded success')
 
         gemini_query = query_with_file(gemini_upload)
