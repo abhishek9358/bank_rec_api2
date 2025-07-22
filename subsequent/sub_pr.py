@@ -389,6 +389,16 @@ async def SubSequentResponse(pdf_path):
         print(
             end_ti - start , 'printng '
         )
+        ttl = 0
+        for val in final_resp:
+            ttl += val['amount']
+        
+        print(ttl, "total sub")
+        # for items in os.listdir(temp_folder):
+        #     os.remove(items)
+
+        # os.rmdir(temp_folder)
+        
         return final_resp
 
     except Exception as err:

@@ -22,6 +22,7 @@ from typing import Annotated
 app = FastAPI()
 jobs = {}
 
+from recon_process_new import ReconProcessNew
 
 # === Import your pipeline functions ===
 from bankst_new import (
@@ -44,7 +45,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 @app.post("/upload")
-async def upload_pdf(file: UploadFile = File(...),
+async def upload_pdfs(file: UploadFile = File(...),
                     fiscal_date: str = Form(...)):
     
         file_location = os.path.join(UPLOAD_DIR, file.filename)
@@ -53,16 +54,17 @@ async def upload_pdf(file: UploadFile = File(...),
 
         # output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
-        gemini_upload = upload_pdf_to_gemini(file_location)
+        # gemini_upload = upload_pdf_to_gemini(file_location)
         print('file uploded success')
 
-        gemini_query = query_with_file(gemini_upload)
-        print(gemini_query)
+        # gemini_query = query_with_file(gemini_upload)
+        # print(gemini_query)
 
         # llamaextracter = HandleLlamaExtract(output_path)
         # print(llamaextracter)
         
-        preprocessd = HandleJsonForResp(gemini_query)
+        # preprocessd = HandleJsonForResp(gemini_query)
+        preprocessd = ReconProcessNew(file_location, "")
         print(preprocessd)
 
         return preprocessd
