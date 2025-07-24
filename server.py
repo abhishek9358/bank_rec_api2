@@ -64,7 +64,7 @@ async def upload_pdfs(file: UploadFile = File(...),
         # print(llamaextracter)
         
         # preprocessd = HandleJsonForResp(gemini_query)
-        preprocessd = ReconProcessNew(file_location, "")
+        preprocessd = await ReconProcessNew(file_location, "")
         print(preprocessd)
 
         return preprocessd
