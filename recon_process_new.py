@@ -66,6 +66,8 @@ async def ExtractChecks(base64_en_content, fiscal_date):
                             DATE | TYPE (Optional) | REF NO. | PAYEE | AMOUNT
                         if you able to exact match the label **Outsanding Checks/Vouchers**
                             only extract oustanding checks do not extract cleared checks
+                            follow every page and make sure label Reconciliation Date: MM/DD/YYYY should match date {fiscal_date} you have to extract only pages that have this Reconciliation Date label exact match.
+                            stop extracting data as file may contain multiple Reconciliation Date Data so only extract where {fiscal_date} match 
                             json format
                             DOCUMENT NUMBER | Document Date | Document Amount | Payee
                     """)
@@ -74,6 +76,7 @@ async def ExtractChecks(base64_en_content, fiscal_date):
         ]
 
         generate_content_config = types.GenerateContentConfig(
+            thinking_config=types.ThinkingConfig(thinking_budget=-1),
             system_instruction='you are a cpa audit reviewer having rich exprterties in analysing documents you will read the document and extract relevent data as asked by the user and you will consisitant with your resulst and everytime you will return same output for same file and will not hulicinate.',
             response_mime_type='application/json',
             response_schema=types.Schema(
@@ -135,7 +138,11 @@ async def ExtractOtherDesposits(base64_en_content, fiscal_date):
                         data=base64.b64decode(base64_en_content)
                     ),
                     types.Part.from_text(text=f"""
-                        extract Labled Data Uncleared deposits and other credits as of {fiscal_date}
+                        extract Labled Data
+                        if you are able to exact match label **Uncleared deposits and other credits as of {fiscal_date}** 
+                            json format
+                            DATE | TYPE (Optional) | REF NO | PAYEE | AMOUNT
+                        if you are able to exact match label **Outstanding Deposits**
                             json format
                             DATE | TYPE (Optional) | REF NO | PAYEE | AMOUNT
                     """) 
@@ -189,7 +196,7 @@ async def ExtractOtherDesposits(base64_en_content, fiscal_date):
         total_1 = 0
         for values in resp_jsn['Uncleared Deposits and Credits']:
             print(values, "values of credits")
-            total_1 += float(re.sub("[(),]", '', values['amount']))
+            total_1 += float(convertToNum(values['amount']))
         resp_jsn['total_1'] = total_1
         
         return resp_jsn
