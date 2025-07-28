@@ -7,11 +7,11 @@ import re
 from google import genai
 from google.genai import types
 
-GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")  # ⬅️ Replace with your Gemini API key
+GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")  
 # genai.configure(api_key=GOOGLE_API_KEY)
 
 client = genai.Client(api_key=GOOGLE_API_KEY)
-model = "gemini-2.5-flash"
+model = "gemini-2.5-pro"
 
 async def ReconProcessNew(file_path, fiscal_date):
     try:
@@ -61,7 +61,7 @@ async def ExtractChecks(base64_en_content, fiscal_date):
                     ),
                     types.Part.from_text(text=f"""
                         extract Labled Data
-                        if you are able to exact match the label *Uncleared checks and payments as of {fiscal_date}* then extract in below format
+                        if you are able to exact match the label Uncleared checks and payments as of {fiscal_date} then extract in below format
                             json format
                             DATE | TYPE (Optional) | REF NO. | PAYEE | AMOUNT
                         if you able to exact match the label **Outsanding Checks/Vouchers**
