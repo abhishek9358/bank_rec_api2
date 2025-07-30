@@ -14,6 +14,8 @@ from bank_reconsiliation import run_pdf_filter_pipeline
 import time 
 from gemini_recon import upload_pdf_to_gemini, query_with_file
 from bank_st_datafinder import run_pdf_filter_pipeline_st
+from subseq_process_new import HandleSubsequentProcess
+import base64
 
 from subsequent.index import  HandleSubSequent
 
@@ -51,7 +53,8 @@ async def upload_pdfs(file: UploadFile = File(...),
         file_location = os.path.join(UPLOAD_DIR, file.filename)
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
-
+        
+      
         # output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
         # gemini_upload = upload_pdf_to_gemini(file_location)
@@ -160,10 +163,11 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
     try:
         contents1 = await file.read()
 
-        with open(file_path1, "wb") as f:
+        with open(file_path1, 'wb') as f:
             f.write(contents1)
         
-        final_resp =  await HandleSubSequent(fiscal_date,file_path1)
+        # final_resp =  await HandleSubSequent(fiscal_date,file_path1)
+        final_resp = await HandleSubsequentProcess(file_path1)
 
         # print(final_resp, 'hi')
         try:
@@ -172,13 +176,11 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
             pass
 
         return {
-             "result": {
-                "items": final_resp
-             }
+             "result": final_resp
         }
     except Exception as err:
         print(err, "error in sub api")
-        os.remove(f"./{file_path1}")
+        # os.remove(f"./{file_path1}")
         return {
               "result": "Could not found"
          }

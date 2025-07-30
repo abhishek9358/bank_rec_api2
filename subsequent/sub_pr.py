@@ -200,7 +200,7 @@ def SubSequentResponse1(part_data: types.Part, max_retries=3):
         try:
             client = genai.Client(api_key=API_KEY)
             # files = [client.files.upload(file=file_path)]
-            model = "models/gemini-1.5-flash"
+            model = "models/gemini-2.0-flash"
             contents = [
                 types.Content(
                     role="user",
@@ -364,7 +364,7 @@ async def SubSequentResponse(pdf_path):
         print(temp_folder, 'temp-folder')
         all_images =  os.listdir("subsequent/temp_images")
         
-        images = convert_from_path(pdf_path, output_folder=temp_folder, thread_count=os.cpu_count(), dpi=300)
+        images = convert_from_path(pdf_path, output_folder=temp_folder, thread_count=os.cpu_count(), dpi=500)
         
         print(
             'sta',  (time.time()) -start
