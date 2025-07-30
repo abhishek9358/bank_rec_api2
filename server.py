@@ -176,7 +176,9 @@ async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFi
             pass
 
         return {
-             "result": final_resp
+             "result": {
+                  "items": final_resp
+             }
         }
     except Exception as err:
         print(err, "error in sub api")

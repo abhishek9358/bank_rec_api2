@@ -192,7 +192,7 @@ async def HandleSubsequentProcess(file_path):
             results = await asyncio.gather(*tasks)   
 
             for items in results:
-                final_res.append(items)
+                final_res.extend(items['items'])
         end = time.time()
 
         
