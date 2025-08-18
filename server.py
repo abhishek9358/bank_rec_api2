@@ -4,25 +4,31 @@ from fastapi.responses import FileResponse
 from datetime import datetime
 import shutil
 import os
-from llama_extractor import HandleBankStatement, HandleLlamaExtract
-from extracter import Process1
-from fastapi import BackgroundTasks, FastAPI, File, UploadFile, Form, Response
+from llama_extractor import  HandleLlamaExtract
+from fastapi import  FastAPI, File, UploadFile, Form, Response
 from prepare_resp import HandleJsonForResp
 from fastapi.responses import JSONResponse
+from text import generate
+import json
+from bank_reconsiliation import run_pdf_filter_pipeline
+import time 
+from gemini_recon import upload_pdf_to_gemini, query_with_file
+from bank_st_datafinder import run_pdf_filter_pipeline_st
+from subseq_process_new import HandleSubsequentProcess
+import base64
+
+from subsequent.index import  HandleSubSequent
+
+from typing import Annotated
 
 app = FastAPI()
 jobs = {}
 
+from recon_process_new import ReconProcessNew
 
 # === Import your pipeline functions ===
 from bankst_new import (
-    remove_annotations_from_pdf,
-    extract_text,
-    split_into_chunks,
-    find_relevant_pages,
-    preprocess_and_save_images,
     save_filtered_pdf,
-    remove_annotations_and_enhance,
     cleanup_temp_images,
     
 )
@@ -33,207 +39,55 @@ FILE_PATH = "./output_uploaded"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 last_file = None
 
+
+UPLOAD_DIR = "uploaded_files"
+OUTPUT_DIR = "output_folder"
+
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 @app.post("/upload")
-async def upload_file(background_tasks: BackgroundTasks, file: UploadFile = File(...), fiscal_date: str = Form(...)):
-    print('hitting upload recon api')
-    with open("data.json", 'w') as files:
-            json.dump({}, files)
-
-    file_path = os.path.join(UPLOAD_DIR, file.filename)
-    last_file = file.filename
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+async def upload_pdfs(file: UploadFile = File(...),
+                    fiscal_date: str = Form(...)):
     
-    output_pdf = os.path.join(FILE_PATH, file.filename)
-    rst = Process1(file_path, fiscal_date, output_pdf, False)
-
-    if rst == False: return {"data": []}
-    # olm_resp = await RunProcess(output_pdf)
-    # background_tasks.add_task(RunProcess, output_pdf)
-    # print(olm_resp, "olm respon")
-                                                                                    
-    # CovertJsonlToTxt('/home/nova/projects/projects/olm_output/results/output.jsonl')
-    jobs = {"status": "processing"}
-    
-    background_tasks.add_task(HandleLlamaExtract, output_pdf) 
-
-    try:
-        # os.remove('projects/olm_output/results/output.jsonl')
-        # os.remove('output.txt')
-        os.remove(f"{UPLOAD_DIR}/{file.filename}")
+        file_location = os.path.join(UPLOAD_DIR, file.filename)
+        with open(file_location, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
         
-        # os.remove('output.txt')
-    except:
-        pass
-    
+      
+        # output_path = run_pdf_filter_pipeline(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
+        # gemini_upload = upload_pdf_to_gemini(file_location)
+        print('file uploded success')
 
-    return jobs
+        # gemini_query = query_with_file(gemini_upload)
+        # print(gemini_query)
 
-
-@app.get("/upload/status", status_code=200)
-async def upload_file(response: Response):
-    print('hitting upload recon status api')
-    with open("data.json", 'r') as file:
-            extracted_text = file.read()
-
-    if len(extracted_text) < 20:
-        response.status_code = 404
-        return {"data": [], "status": "pending"}
-   
-                                                                                    
-    # CovertJsonlToTxt('/home/nova/projects/projects/olm_output/results/output.jsonl')
-
-    result = HandleJsonForResp('data.json')
-    print(result, "result")
-
-    try:
-        # os.remove('projects/olm_output/results/output.jsonl')
-        # os.remove('output.txt')
-        # os.remove(f"{UPLOAD_DIR}/{last_file}")
-        print('trying')
+        # llamaextracter = HandleLlamaExtract(output_path)
+        # print(llamaextracter)
         
-        # os.remove('output.txt')
-    except:
-        pass
-    
+        # preprocessd = HandleJsonForResp(gemini_query)
+        preprocessd = await ReconProcessNew(file_location, "")
+        print(preprocessd)
 
-    list_images = os.listdir("temp_images")
-
-    if len(list_images):
-        for img in list_images:
-            os.remove(f"temp_images/{img}")
-    return {"data": result}
-    
-
-
-@app.post("/upload/")
-async def process_pdf(
-    file: UploadFile = File(...),
-    fiscal_date: str = Form(...)
-):
-    # === Save Uploaded File ===
-    input_pdf_path = f"uploaded_{file.filename}"
-    with open(input_pdf_path, "wb") as f:
-        shutil.copyfileobj(file.file, f)
-
-    # === Parse Reconciliation Date ===
-    try:
-        rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
-    except ValueError:
-        return {"error": "Invalid date format. Use MM/DD/YYYY."}
-
-    base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
-    cleaned_pdf = f"{base_name}_annoted.pdf"
-
-    # === Run Pipeline ===
-    try:
-        # out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-        # extracted_pages = extract_text(cleaned_pdf)
-        # chunks = split_into_chunks(extracted_pages)
-        # relevant_pages = find_relevant_pages(chunks, rec_date)
-
-        out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-        extracted_pages = extract_text(cleaned_pdf)
-        chunks = split_into_chunks(extracted_pages)
-        relevant_pages = find_relevant_pages(chunks, rec_date)
-
-        if not relevant_pages:
-            return {"message": "No relevant pages found for the given reconciliation date."}
-
-        temp_img_dir = "temp_images"
-        preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
-
-        output_dir = "output_uploaded"
-        filtered_pdf = save_filtered_pdf(cleaned_pdf, output_dir, relevant_pages)
-
-        # final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
-        # remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
-
-
-        # Cleanup
-        # os.remove(cleaned_pdf)
-        # os.remove(filtered_pdf)
-        # cleanup_temp_images("temp_images")
-        # cleanup_temp_images("temp_cleaned_images")
-        os.remove(input_pdf_path)
-
-        result = HandleLlamaExtract(filtered_pdf)
-        print(result, "results")
-        print(result)
-        # os.remove(final_pdf)
-        return {"data": result}
-
-    except Exception as e:
-        return {"error": str(e)}    
-    
-
-
-# from bankst_new import  send_first_page_to_gemini, generate
-from text import generate
-import json
-
-# from fastapi.responses import JSONResponse
-
-
+        return preprocessd
 
 
 @app.post("/upload_st")
-async def process_and_extract_pdf(
-    file: UploadFile = File(...),
-    fiscal_date: str = Form(...)
-):
-    # === Save Uploaded File ===
-    input_pdf_path = f"uploaded_{file.filename}"
-    with open(input_pdf_path, "wb") as f:
-        shutil.copyfileobj(file.file, f)
+async def upload_pdf(file: UploadFile = File(...),
+                    fiscal_date: str = Form(...)):
+    
+        file_location = os.path.join(UPLOAD_DIR, file.filename)
+        with open(file_location, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
 
-    # === Parse Reconciliation Date ===
-    try:
-        rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
-    except ValueError:
-        return {"error": "Invalid date format. Use MM/DD/YYYY."}
+        output_path = run_pdf_filter_pipeline_st(file_location, fiscal_date, output_dir=OUTPUT_DIR)
 
-    base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
-    cleaned_pdf = f"{base_name}_annoted.pdf"
-
-    try:
-        # === PDF Cleanup Pipeline ===
-        # out_path = remove_annotations_from_pdf(input_pdf_path, cleaned_pdf)
-        # extracted_pages = extract_text(cleaned_pdf)
-        # chunks = split_into_chunks(extracted_pages)
-        # relevant_pages = find_relevant_pages(chunks, rec_date)
-
-        # if not relevant_pages:
-            # return {"message": "No relevant pages found for the given reconciliation date."}
-
-        temp_img_dir = "temp_images_st"
-        # preprocess_and_save_images(cleaned_pdf, relevant_pages, temp_img_dir)
-
-        output_dir = "output_uploaded"
-        filtered_pdf = save_filtered_pdf(input_pdf_path, output_dir, [1,2])
-
-        # final_pdf = os.path.join(output_dir, f"{base_name}.pdf")
-        # remove_annotations_and_enhance(filtered_pdf, "temp_cleaned_images", final_pdf)
-
-        # === Bank Info Extraction ===
-        # result = extract_bank_data_from_pdf(final_pdf)
-        # result1 = extract_bank_data_from_pdf(filtered_pdf)
-
-        # result = send_first_page_to_gemini(filtered_pdf)
-        # enhance_pdf = enhance_pdf_with_images(filtered_pdf)
-        gen = generate(filtered_pdf, fiscal_date)
+       
+        gen = generate(output_path)
         print(gen)
 
-        # final = HandleJsonForResp(gen)
-        # print(final)
-
-
-
-        # result = HandleBankStatement(filtered_pdf)
-        # print(result)
-        # print(result1)
-
+        print("working 1")
         # === Cleanup ===
         try:
             os.remove(input_pdf_path)
@@ -243,53 +97,95 @@ async def process_and_extract_pdf(
         except Exception as err:
             print(err, "file remove error")
             pass
-        # os.remove(filtered_pdf)
-        # os.remove(final_pdf)
-
+       
         return {"data": gen}
-
-    except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=500)   
-    
-
-# from fastapi import FastAPI, UploadFile, File, Form
-# from fastapi.responses import JSONResponse
-# import os
-# import shutil
-# from bankst_new import   save_and_enhance_filtered_pdf
-# from llama_extractor import HandleBankStatement
-# from prepare_resp import HandleJsonForResp
-
-# app = FastAPI()
-
-
-# UPLOAD_DIR = "uploads"
-# OUTPUT_DIR = "output"
-# os.makedirs(UPLOAD_DIR, exist_ok=True)
-
-# @app.post("/upload_st")
-# async def process_pdf(file: UploadFile = File(...), 
-#                       fiscal_date: str = Form(...)):
-#     try:
-#         # Save uploaded file
-#         upload_path = os.path.join(UPLOAD_DIR, file.filename)
-#         with open(upload_path, "wb") as buffer:
-#             shutil.copyfileobj(file.file, buffer)
-
-#         # Process it
-#         filtered_pdf_path = save_and_enhance_filtered_pdf(upload_path, fiscal_date, OUTPUT_DIR)
-
-#         process = HandleBankStatement(filtered_pdf_path)
-#         print(process)
-
-#         data = HandleJsonForResp(process)
-#         print(data)
-
-#         return process
-
-#         # return {"data": data}
 
         
 
+    
+
+
+# @app.post("/upload_st")
+# async def process_and_extract_pdf(
+#     file: UploadFile = File(...),
+#     fiscal_date: str = Form(...)
+# ):
+#     # === Save Uploaded File ===
+#     input_pdf_path = f"uploaded_{file.filename}"
+#     with open(input_pdf_path, "wb") as f:
+#         shutil.copyfileobj(file.file, f)
+
+#     # === Parse Reconciliation Date ===
+#     try:
+#         rec_date = datetime.strptime(fiscal_date, "%m/%d/%Y")
+#     except ValueError:
+#         return {"error": "Invalid date format. Use MM/DD/YYYY."}
+
+#     base_name = os.path.splitext(os.path.basename(input_pdf_path))[0]
+#     cleaned_pdf = f"{base_name}_annoted.pdf"
+
+#     try:
+#         # === PDF Cleanup Pipeline ===
+        
+
+#         temp_img_dir = "temp_images_st"
+
+#         output_dir = "output_uploaded"
+#         filtered_pdf = save_filtered_pdf(input_pdf_path, output_dir, [1,2,3,4])
+#         print("working 0")
+       
+#         gen = generate(filtered_pdf, fiscal_date)
+#         print(gen)
+
+#         print("working 1")
+#         # === Cleanup ===
+#         try:
+#             os.remove(input_pdf_path)
+#             os.remove(filtered_pdf)  # Optional
+#             cleanup_temp_images("temp_images_st")
+#             cleanup_temp_images("temp_cleaned_images")
+#         except Exception as err:
+#             print(err, "file remove error")
+#             pass
+       
+#         return {"data": gen}
+
 #     except Exception as e:
-#         return JSONResponse(content={"status": "error", "message": str(e)}, status_code=500)    
+#         print(e, "error in api")
+#         return JSONResponse(content={"error": str(e)}, status_code=500)   
+    
+
+@app.post("/upload_sub")
+async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFile):
+
+    print(file)
+    file_path1 = f"./{time.time()}{file.filename}"
+    try:
+        contents1 = await file.read()
+
+        with open(file_path1, 'wb') as f:
+            f.write(contents1)
+        
+        # final_resp =  await HandleSubSequent(fiscal_date,file_path1)
+        final_resp = await HandleSubsequentProcess(file_path1)
+
+        # print(final_resp, 'hi')
+        try:
+            os.remove(f"./{file_path1}")
+        except:
+            pass
+
+        return {
+             "result": {
+                  "items": final_resp
+             }
+        }
+    except Exception as err:
+        print(err, "error in sub api")
+        # os.remove(f"./{file_path1}")
+        return {
+              "result": "Could not found"
+         }
+    
+
+  
