@@ -120,7 +120,7 @@ def generate(pdf_path,  retries=5, delay=2):
 
             files = [client.files.upload(file=pdf_path)]
 
-            model = "models/gemini-1.5-flash"
+            model = "models/gemini-2.5-flash"
             contents = [
                 types.Content(
                     role="user",

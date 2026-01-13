@@ -11,7 +11,7 @@ GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
 # genai.configure(api_key=GOOGLE_API_KEY)
 
 client = genai.Client(api_key=GOOGLE_API_KEY)
-model = "gemini-2.5-pro"
+model = "gemini-3-pro-preview"
 
 async def ReconProcessNew(file_path, fiscal_date):
     try:

@@ -13,7 +13,7 @@ from google.genai import types
 GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")  
 model = "gemini-2.5-flash"
 
-client = genai.Client(api_key="AIzaSyCJvpdXTjkO3Dusta1I-EisbmOA0HuPACc")
+client = genai.Client(api_key=GOOGLE_API_KEY)
 
 
 

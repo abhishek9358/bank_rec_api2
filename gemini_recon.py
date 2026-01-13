@@ -9,7 +9,7 @@ GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")  # ⬅️ Replace with your Gemini 
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # STEP 2: Load Gemini Model with file capabilities
-model = genai.GenerativeModel("models/gemini-1.5-flash")
+model = genai.GenerativeModel("models/gemini-2.5-flash")
 
 # STEP 3: Upload the PDF
 def upload_pdf_to_gemini(pdf_path):

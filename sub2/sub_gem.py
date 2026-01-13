@@ -11,7 +11,7 @@ GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # STEP 2: Load the Gemini model
-model = genai.GenerativeModel("models/gemini-1.5-flash")
+model = genai.GenerativeModel("models/gemini-2.5-flash")
 
 # STEP 3: Chunk PDF into 10-page segments
 def split_pdf(pdf_path, chunk_size=10):

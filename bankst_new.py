@@ -19,7 +19,7 @@ load_dotenv()
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 # === Gemini Config ===
 genrate.configure(api_key=gemini_api_key)
-model = genrate.GenerativeModel("models/gemini-1.5-flash")
+model = genrate.GenerativeModel("models/gemini-2.5-flash")
 
 def gemini_response(prompt):
     response = model.generate_content(prompt)
@@ -401,7 +401,7 @@ def generate(pdf_path, fiscal_date):
             print("❌ File upload failed:", upload_error)
             raise ValueError("Gemini file upload failed.")
 
-        model = "models/gemini-1.5-flash"
+        model = "models/gemini-2.5-flash"
         contents = [
             types.Content(
                 role="user",

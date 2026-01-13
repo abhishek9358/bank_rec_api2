@@ -28,7 +28,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key= GEMINI_API_KEY)
 # genai.configure(api_key="AIzaSyAhqUkwc1lGklT9jq7pBYoPjXwlnxn1eqs")
 
-model = genai.GenerativeModel('models/gemini-1.5-flash')
+model = genai.GenerativeModel('models/gemini-2.5-flash')
 
 
 from PIL import Image, ImageEnhance, ImageOps
