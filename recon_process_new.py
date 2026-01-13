@@ -61,7 +61,7 @@ async def ExtractChecks(base64_en_content, fiscal_date):
                     ),
                     types.Part.from_text(text=f"""
                         extract Labled Data
-                        if you are able to exact match the label Uncleared checks and payments as of {fiscal_date} then extract in below format
+                        if you are able to exact match the keyword label ***Uncleared checks and payments as of {fiscal_date}*** it should be exact match do not take values from including keyword like **after** then extract in below format
                             json format
                             DATE | TYPE (Optional) | REF NO. | PAYEE | AMOUNT
                         if you able to exact match the label **Outsanding Checks/Vouchers**
@@ -77,7 +77,12 @@ async def ExtractChecks(base64_en_content, fiscal_date):
 
         generate_content_config = types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_budget=-1),
-            system_instruction='you are a cpa audit reviewer having rich exprterties in analysing documents you will read the document and extract relevent data as asked by the user and you will consisitant with your resulst and everytime you will return same output for same file and will not hulicinate.',
+            system_instruction="""you are a cpa audit reviewer having rich exprterties in analysing documents 
+            you will read the document and extract relevent data
+            as asked by the user and you will consisitant with your
+              resulst and everytime you will return same output for same file and will not hulicinate.
+              also you will not extract cleared checks and after checks 
+              """,
             response_mime_type='application/json',
             response_schema=types.Schema(
                 type=types.Type.OBJECT,
