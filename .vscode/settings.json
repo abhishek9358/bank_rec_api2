@@ -1,7 +1,16 @@
 {
+    "window.title": "Bank Rec API TWO",
     "workbench.colorCustomizations": {
         "activityBar.background": "#555d10",
-        "titleBar.activeBackground": "#68ff0a",
-        "titleBar.activeForeground": "#FDFAFE"
+        "titleBar.activeBackground": "#55644c",
+        "titleBar.activeForeground": "#FDFAFE",
+        "titleBar.inactiveBackground": "#484E0D",
+        "titleBar.inactiveForeground": "#FAFBE9",
+        "statusBar.background": "#484E0D",
+        "statusBar.foreground": "#FAFBE9",
+        "statusBar.debuggingBackground": "#484E0D",
+        "statusBar.debuggingForeground": "#FAFBE9",
+        "statusBar.noFolderBackground": "#484E0D",
+        "statusBar.noFolderForeground": "#FAFBE9"
     }
 }

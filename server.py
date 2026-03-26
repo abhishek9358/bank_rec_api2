@@ -20,9 +20,20 @@ import base64
 from subsequent.index import  HandleSubSequent
 
 from typing import Annotated
+from tb_extractor import parse_trial_balance_excel
 
 app = FastAPI()
 jobs = {}
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 from recon_process_new import ReconProcessNew
 
@@ -154,6 +165,27 @@ async def upload_pdf(file: UploadFile = File(...),
 #         print(e, "error in api")
 #         return JSONResponse(content={"error": str(e)}, status_code=500)   
     
+
+@app.post("/upload_tb")
+async def upload_trial_balance(file: UploadFile = File(...)):
+    file_path = os.path.join(UPLOAD_DIR, file.filename)
+    try:
+        contents = await file.read()
+        with open(file_path, "wb") as f:
+            f.write(contents)
+
+        result = parse_trial_balance_excel(file_path)
+        return JSONResponse(content=result)
+
+    except Exception as err:
+        print(err, "error in upload_tb")
+        return JSONResponse(content={"error": str(err)}, status_code=500)
+    finally:
+        try:
+            os.remove(file_path)
+        except Exception:
+            pass
+
 
 @app.post("/upload_sub")
 async def process_subsequent(fiscal_date: Annotated[str, Form()], file: UploadFile):
